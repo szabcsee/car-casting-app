@@ -25,3 +25,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Registration
+1. Type		(Személyautó, Kishaszonjármű, Haszonjármű, Motorkerékpár, Autóbusz, Lakókocsi, Pótkocsi, Egyéb, Hajó)
+2. Make		(Gyártmány)
+3. Model 	(Modell)
+4. Body 	(Pickup, Terepjáró, Buggy, Cabrio, Coupe, Egyterű, Ferdehátú, Hot rod, Kisbusz, Kombi, Lépcsőshátú, Mopedautó, Sedan, Sport, 				Városi terepjáró (crossover), Egyéb)
+5. Állapot	(Normál, Kitűnő, Megkímélt, Újszerű, Enyhén sérült, Hibás)
+6. Ajtók száma
+7. Üzemanyag
+8. Roof 	(lemeztető, vászontető, nyitható keménytető, harmonikatető, targatető, fix üvegtető, panoráma tető, fix napfénytető, nyitható 				napfénytető, elhúzható napfénytető, motoros napfénytető)
+9. Colour	(barna, sötétbarna, világosbarna, bézs, bíborvörös, bordó, ezüst, fehér, törtfehér, fekete, homok, ibolya, kék, ibolyakék, óceánkék, sötétkék, világoskék, lila, narancs, okker, pezsgő, piros, rózsaszín, sárga, aranysárga, citromsárga, narancssárga, szürke, sötétszürke, világosszürke, terep, türkiz, vajszínű, zöld, olajzöld, sötétzöld, világoszöld)
