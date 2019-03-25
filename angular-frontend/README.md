@@ -29,12 +29,34 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 #Business logic
 
 ## Registration
-1. Type		(Személyautó, Kishaszonjármű, Haszonjármű, Motorkerékpár, Autóbusz, Lakókocsi, Pótkocsi, Egyéb, Hajó)
-2. Make		(Gyártmány)
+1. Type		(Személyautó, Haszonjármű, Motorkerékpár, Autóbusz, Harcjármű, Szolgálati autók, Egyéb)
+
+1a. OtherType (Egyéb jármű esetén, hintó, kerékpár)
+
+2. Make		(Gyártmány) autocomplete
+
 3. Model 	(Modell)
-4. Body 	(Pickup, Terepjáró, Buggy, Cabrio, Coupe, Egyterű, Ferdehátú, Hot rod, Kisbusz, Kombi, Lépcsőshátú, Mopedautó, Sedan, Sport, 				Városi terepjáró (crossover), Egyéb)
-5. Állapot	(Normál, Kitűnő, Megkímélt, Újszerű, Enyhén sérült, Hibás)
-6. Ajtók száma
+
+4. Body 	(Pickup, Terepjáró, Buggy, Cabrio, Coupe, Egyterű, Ferdehátú, Hot rod, Kisbusz, Kombi, Lépcsőshátú, Mopedautó, Sedan, Sport, 				Városi terepjáró (crossover), Egyéb, Nem releváns) - nem kötelező
+
+5. Állapot	(Üzemképes, Nem üzemképes, Forgalomban van, Nincs forgalomban)
+
 7. Üzemanyag
-8. Roof 	(lemeztető, vászontető, nyitható keménytető, harmonikatető, targatető, fix üvegtető, panoráma tető, fix napfénytető, nyitható 				napfénytető, elhúzható napfénytető, motoros napfénytető)
+
 9. Colour	(barna, sötétbarna, világosbarna, bézs, bíborvörös, bordó, ezüst, fehér, törtfehér, fekete, homok, ibolya, kék, ibolyakék, óceánkék, sötétkék, világoskék, lila, narancs, okker, pezsgő, piros, rózsaszín, sárga, aranysárga, citromsárga, narancssárga, szürke, sötétszürke, világosszürke, terep, türkiz, vajszínű, zöld, olajzöld, sötétzöld, világoszöld)
+
+10. Year (évjárat, mettől meddig ajánlja)
+
+11. Role (játszó autó, statiszta autó, mindkettő)
+
+12. Korszak (időszak amiben hitelesen szerepelhet)
+
+13. Oldtimer (checkbox)
+
+14. Megkülönbőztető jelzés (checkbox)
+
+15. Napi bérletidíj
+
+16. only with Driver (only the owner can drive it)
+
+17. Számlaképes (private or business)
