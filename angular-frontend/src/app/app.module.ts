@@ -4,13 +4,15 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
-import { VehiclesComponent } from './vehicles/vehicles.component';
+import { VehiclesListComponent } from './vehicles/vehicles-list.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    VehiclesComponent
+    VehiclesListComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
