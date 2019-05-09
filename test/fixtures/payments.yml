@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  date: 2017-04-29
+  currency: MyString
+  type: 
+  method: MyString
+  comment: MyString
+  user: one
+
+two:
+  amount: 1
+  date: 2017-04-29
+  currency: MyString
+  type: 
+  method: MyString
+  comment: MyString
+  user: two

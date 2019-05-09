@@ -1,0 +1,21 @@
+<div id="content">
+    <div class="row">
+        <sa-big-breadcrumbs [items]="['Home']" icon="home"
+                            class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></sa-big-breadcrumbs>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div  class="well">
+
+                    <h1>Home</h1>
+                    <p>You're logged in with Angular 7 & JWT!!</p>
+                    <div>
+                        Users from secure api end point:
+                        <ul>
+                            <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
