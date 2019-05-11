@@ -13,8 +13,4 @@ class ApplicationController < ActionController::API
     render '/index.html'
   end
 
-  def sso_login user_data
-    UserController.sso_login(user_data)
-  end
-
 end

@@ -1,3 +1,3 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :email, :phone, :address, :center, :status, :access_token, :buzzer, :lock
+  attributes :id, :first_name, :last_name, :email, :jwt_token, :lock
 end

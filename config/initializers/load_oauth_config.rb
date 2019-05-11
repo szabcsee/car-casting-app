@@ -25,4 +25,4 @@
 #  sso_uri: 'https://sso.prod-example.org/oauth2/'
 #  sso_login: 'false'
 
-OAUTH_CONFIG = YAML.load_file("#{Rails.root.to_s}/config/oauth.yml")[Rails.env]
+# OAUTH_CONFIG = YAML.load_file("#{Rails.root.to_s}/config/oauth.yml")[Rails.env]

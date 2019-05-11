@@ -10,35 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429145239) do
-
-  create_table "payments", force: :cascade do |t|
-    t.integer  "amount"
-    t.date     "payment_date"
-    t.string   "currency"
-    t.string   "payment_type"
-    t.string   "payment_method"
-    t.string   "comment"
-    t.integer  "user_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["user_id"], name: "index_payments_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 20170131211919) do
 
   create_table "users", force: :cascade do |t|
-    t.string   "name"
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email"
-    t.string   "access_token"
-    t.string   "token_data"
-    t.string   "phone"
-    t.text     "address"
-    t.string   "center"
-    t.string   "status"
-    t.string   "buzzer"
+    t.string   "jwt_token"
     t.boolean  "lock"
-    t.datetime "access_token_created_at"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "jwt_token_created_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
 end

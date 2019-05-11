@@ -5,7 +5,6 @@ class UsersController < AuthenticationController
   # GET /users
   def index
     @users = User.all
-
     render json: @users
   end
 
@@ -40,23 +39,12 @@ class UsersController < AuthenticationController
   end
 
   def get_current_user
-    @user = User.find_by access_token: params[:access_token]
+    @user = User.find_by jwt_token: params[:jwt_token]
     if @user
       render json: @user, status: :ok
     else
       render json: '{ message: "Token not found."}', status: :unauthorized
     end
-  end
-
-  def sso_login
-    @user = User.find_by email: user_info['email']
-        @user ? @user : @user = User.new
-        #TODO: have to add much more from API data. Currently only can access the basics.
-        @user.name = "#{user_info['given_name']} #{user_info['family_name']}"
-        @user.access_token = token_data['access_token']
-        @user.access_token_created_at = Time.zone.now
-        @user.token_data = response.body
-        @user.save
   end
 
   private
@@ -67,6 +55,6 @@ class UsersController < AuthenticationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name, :email, :password, :phone, :address, :center, :status, :access_token, :token_data, :buzzer, :lock)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :jwt_token, :lock)
     end
 end
