@@ -1,9 +1,12 @@
-class User < ApplicationRecord
-  def lock_user
-    self.lock = true
-  end
+# frozen_string_literal: true
 
-  def unlock_user
-    self.lock = false
-  end
+class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, 
+         :registerable,
+         :recoverable, 
+         :rememberable, 
+         :validatable
+  include DeviseTokenAuth::Concerns::User
 end

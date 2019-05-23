@@ -22,6 +22,10 @@ gem 'puma', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Devise for user authentication
+gem 'devise_token_auth'
+gem 'omniauth'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
@@ -38,7 +42,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'wdm', '>= 0.1.0'
+  #gem 'wdm', '>= 0.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
