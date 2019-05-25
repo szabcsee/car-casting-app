@@ -2,7 +2,6 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { MainLayoutComponent } from "./shared/layout/app-layouts/main-layout.component";
-import { AuthLayoutComponent } from "./shared/layout/app-layouts/auth-layout.component";
 import { CalcComponent } from "./calc/calc.component";
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
@@ -20,10 +19,6 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
         path: "calc",
         component: CalcComponent
       },
@@ -32,6 +27,10 @@ const routes: Routes = [
         component: ForgotComponent
       }
     ]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }

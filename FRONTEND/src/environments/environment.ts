@@ -7,7 +7,9 @@ export const environment = {
   production: false,
 
   firebase: {},
-
+  token_auth_config: {
+    apiBase: 'http://localhost:3000'
+  },
 
   debug: true,
   log: {

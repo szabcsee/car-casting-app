@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
+import { environment } from "../environments/environment";
+
 
 @Component({
   selector: 'app-root',
