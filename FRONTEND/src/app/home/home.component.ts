@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { User } from '@app/_models';
-import { UserService, AuthenticationService } from '@app/_services';
+import { UserService } from '@app/_services';
 
 @Component({
   templateUrl: './home.component.html',

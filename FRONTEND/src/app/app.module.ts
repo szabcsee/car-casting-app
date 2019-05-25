@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
+import {environment} from "@env/environment";
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { routing } from './app-routing.module';
@@ -15,8 +16,8 @@ import { CalcModule } from './calc/calc.module';
 import { HomeComponent } from './home/';
 import { LoginComponent } from './login/';
 import { ForgotComponent } from './forgot/forgot.component';
-
-
+import { AngularTokenService } from 'angular-token';
+import { AngularTokenModule } from "angular-token";
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ForgotComponent } from './forgot/forgot.component';
     HttpClientModule,
     SharedModule,
     CoreModule,
-    CalcModule
+    CalcModule,
+    AngularTokenModule.forRoot({ apiBase: environment.token_auth_config.apiBase })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

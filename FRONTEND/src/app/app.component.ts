@@ -1,28 +1,28 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-
-import { AuthenticationService } from './_services';
-import { User } from './_models';
-import { environment } from "../environments/environment";
+import {Component} from '@angular/core';
+import {Router} from '@angular/router';
+import {User} from './_models';
+import {AngularTokenService} from "angular-token";
 
 
 @Component({
-  selector: 'app-root',
-  template: '<router-outlet></router-outlet>',
+    selector: 'app-root',
+    template: '<router-outlet></router-outlet>',
 })
 export class AppComponent {
-  title = 'sa';
-  currentUser: User;
+    title = 'sa';
 
-  constructor(
-    private router: Router,
-    private authenticationService: AuthenticationService
-  ) {
-    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
-  }
+    constructor(
+        private router: Router,
+        private tokenService: AngularTokenService
+    ) {
 
-  logout() {
-    this.authenticationService.logout();
-    this.router.navigate(['/login']);
-  }
+    }
+
+    logout() {
+        this.tokenService.signOut().subscribe(
+            res => console.log(res),
+            error => console.log(error)
+        );
+        this.router.navigate(['/login']);
+    }
 }
