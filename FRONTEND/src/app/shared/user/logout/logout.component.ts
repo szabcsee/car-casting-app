@@ -1,9 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import {ApplicationModule, Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
 import { NotificationService } from "@app/core/services/notification.service";
 
 import {UserService} from "@app/core/services/user.service";
-import {AuthenticationService} from "@app/_services/authentication.service";
+import {AngularTokenService} from "angular-token";
 
 @Component({
   selector: "sa-logout",
@@ -20,8 +20,8 @@ export class LogoutComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private authenticationService: AuthenticationService,
     private router: Router,
+    private tokenService: AngularTokenService,
     private notificationService: NotificationService
   ) {
   }
@@ -44,8 +44,11 @@ export class LogoutComponent implements OnInit {
   }
 
   logout() {
-    this.authenticationService.logout()
-    this.router.navigate(["/login"]);
+    this.tokenService.signOut().subscribe(
+        res => console.log(res),
+        error => console.log(error)
+    );
+    this.router.navigate(['/login']);
   }
 
   ngOnInit() {}

@@ -6,6 +6,7 @@ import { CalcComponent } from "./calc/calc.component";
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ForgotComponent } from "./forgot/forgot.component";
+import {AngularTokenService} from "angular-token";
 
 const routes: Routes = [
   {
@@ -14,7 +15,8 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: HomeComponent
+        component: HomeComponent,
+        canActivate: [AngularTokenService]
       },
       {
         path: "calc",

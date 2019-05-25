@@ -16,7 +16,6 @@ import { CalcModule } from './calc/calc.module';
 import { HomeComponent } from './home/';
 import { LoginComponent } from './login/';
 import { ForgotComponent } from './forgot/forgot.component';
-import { AngularTokenService } from 'angular-token';
 import { AngularTokenModule } from "angular-token";
 
 
@@ -38,11 +37,19 @@ import { AngularTokenModule } from "angular-token";
     SharedModule,
     CoreModule,
     CalcModule,
-    AngularTokenModule.forRoot({ apiBase: environment.token_auth_config.apiBase })
+    AngularTokenModule.forRoot({
+          apiBase: environment.token_auth_config.apiBase,
+          userTypes: [
+                { name: 'ADMIN', path: 'admin' },
+                { name: 'USER', path: 'user' }],
+          signInRedirect: '/login',
+          signOutPath: '/auth/sign_out'
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    AngularTokenModule
 
     // provider used to create fake backend
     //fakeBackendProvider
