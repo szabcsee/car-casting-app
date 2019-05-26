@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
     me.tokenService.signIn({login: this.f.username.value, password: this.f.password.value})
         .subscribe(
         res => {
+          localStorage.setItem('currentUser', JSON.stringify(res.body.data));
           me.router.navigate([this.returnUrl]);
         },
         error =>    console.log(error)

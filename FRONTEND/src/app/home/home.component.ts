@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
-
-import { User } from '@app/_models';
 import { UserService } from '@app/_services';
 import {AngularTokenService} from "angular-token";
 
@@ -10,7 +7,7 @@ import {AngularTokenService} from "angular-token";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-    users: User[] = [];
+    currentUser: any;
 
     constructor(
         private userService: UserService,
@@ -18,8 +15,6 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        //this.userService.getAll().pipe(first()).subscribe(users => {
-        //    this.users = users;
-        //});
+        this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
 }

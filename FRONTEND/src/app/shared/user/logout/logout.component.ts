@@ -48,6 +48,7 @@ export class LogoutComponent implements OnInit {
         res => console.log(res),
         error => console.log(error)
     );
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
 
