@@ -3,9 +3,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
-// used to create fake backend
-import { fakeBackendProvider } from './_helpers';
 import {environment} from "@env/environment";
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
@@ -17,6 +14,7 @@ import { HomeComponent } from './home/';
 import { LoginComponent } from './login/';
 import { ForgotComponent } from './forgot/forgot.component';
 import { AngularTokenModule } from "angular-token";
+import {RegistrationComponent} from './registration/';
 
 
 @NgModule({
@@ -24,7 +22,8 @@ import { AngularTokenModule } from "angular-token";
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ForgotComponent
+    ForgotComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
@@ -50,9 +49,6 @@ import { AngularTokenModule } from "angular-token";
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     AngularTokenModule
-
-    // provider used to create fake backend
-    //fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

@@ -17,3 +17,6 @@
  * - BODY
  * - CUSTOM STYLES
  */
+label.input input.ng-invalid {
+    border-color:#a90329!important;
+}

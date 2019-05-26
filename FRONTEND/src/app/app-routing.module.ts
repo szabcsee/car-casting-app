@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ForgotComponent } from "./forgot/forgot.component";
 import {AngularTokenService} from "angular-token";
+import {RegistrationComponent} from "@app/registration";
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent
   },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
