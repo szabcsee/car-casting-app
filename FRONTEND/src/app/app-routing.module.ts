@@ -13,11 +13,11 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
+    canActivate: [AngularTokenService],
     children: [
       {
         path: '',
         component: HomeComponent,
-        canActivate: [AngularTokenService]
       },
       {
         path: "calc",

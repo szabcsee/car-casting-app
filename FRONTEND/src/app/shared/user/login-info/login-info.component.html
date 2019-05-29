@@ -1,8 +1,8 @@
 <div class="login-info" *ngIf="us.user$ | async as user">
   <span><a (click)="toggleShortcut()">
-	   <img *ngIf="currentUser.image" [src]="currentUser.image" alt="me"
-          class="online"/><img *ngIf="!currentUser.image" src="/assets/img/avatars/sunny.png" alt="me"
-                               class="online"/><span >{{currentUser.name }}</span>&nbsp;<i class="fa fa-angle-down"></i>
+	   <img *ngIf="user.image" [src]="user.image" alt="me"
+          class="online"/><img *ngIf="!user.image" src="/assets/img/avatars/sunny.png" alt="me"
+                               class="online"/><span >{{user.name }}</span>&nbsp;<i class="fa fa-angle-down"></i>
     </a>
    </span>
 </div>

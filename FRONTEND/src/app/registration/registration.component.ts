@@ -14,6 +14,7 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   submitted = false;
   bsModalRef: BsModalRef;
+  output;
 
   constructor(
       private formBuilder: FormBuilder,
@@ -25,8 +26,7 @@ export class RegistrationComponent implements OnInit {
  
    ngOnInit() {
      this.registrationForm = this.formBuilder.group({
-       firstname: ['', Validators.required],
-       lastname: ['', Validators.required],
+       name: ['', Validators.required],
        email: ['', Validators.email],
        password: ['', Validators.required, Validators.minLength(6)],
        passwordConfirmation: ['', Validators.required, Validators.minLength(6)]
@@ -42,15 +42,23 @@ export class RegistrationComponent implements OnInit {
     event.preventDefault();
     this.tokenService.registerAccount(
         {
-          firstname: this.f.firstname.value,
-          lastname: this.f.lastname.value,
+          name: this.f.name.value,
           password: this.f.password.value,
           passwordConfirmation: this.f.passwordConfirmation.value,
           login: this.f.email.value
         }).subscribe(
-        res =>      console.log(res),
-        error =>    console.log(error)
+        res =>      {
+          me.output = res;
+          me.registrationForm.reset();
+        },
+        error =>   {
+          me.output = error;
+          me.registrationForm.reset();
+        }
     );
+    console.log(this.tokenService.currentUserData);
+    console.log(this.tokenService.currentAuthData);
+
     //this.router.navigate(['/dashboard'])
   }
 

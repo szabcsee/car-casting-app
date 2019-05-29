@@ -8,8 +8,6 @@ import { LayoutService } from '@app/core/services/layout.service';
   templateUrl: './login-info.component.html',
 })
 export class LoginInfoComponent implements OnInit {
-  private currentUser: any;
-
 
   constructor(
     public us: UserService,
@@ -17,7 +15,7 @@ export class LoginInfoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    debugger;
   }
 
   toggleShortcut() {

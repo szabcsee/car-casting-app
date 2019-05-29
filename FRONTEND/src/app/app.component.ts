@@ -9,4 +9,9 @@ import {AngularTokenService} from "angular-token";
 })
 export class AppComponent {
     title = 'sa';
+    public tokenService: AngularTokenService;
+
+    constructor(tokenService: AngularTokenService) {
+        this.tokenService = tokenService;
+    }
 }

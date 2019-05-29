@@ -82,6 +82,11 @@
             </fieldset>
             <footer>
               <button [disabled]="loading" class="btn btn-primary">Sign in</button>
+              <div *ngIf="submitted && error" class="invalid-feedback">
+                  <div class="alert alert-warning fade in">
+                    <strong>{{error}}</strong>
+                  </div>
+              </div>
             </footer>
           </form>
         </div>
