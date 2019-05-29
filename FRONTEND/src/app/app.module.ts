@@ -3,7 +3,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import {environment} from "@env/environment";
+import { environment} from "@env/environment";
 import { AppComponent } from './app.component';
 import { routing } from './app-routing.module';
 import { CoreModule } from './core/core.module';
