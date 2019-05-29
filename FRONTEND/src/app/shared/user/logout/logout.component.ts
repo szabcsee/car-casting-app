@@ -48,8 +48,8 @@ export class LogoutComponent implements OnInit {
         res => console.log(res),
         error => console.log(error)
     );
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('currentUserData');
+    this.router.navigateByUrl('/login');
   }
 
   ngOnInit() {}

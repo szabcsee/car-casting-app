@@ -13,15 +13,16 @@ const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    canActivate: [AngularTokenService],
     children: [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [AngularTokenService],
       },
       {
         path: "calc",
-        component: CalcComponent
+        component: CalcComponent,
+        canActivate: [AngularTokenService],
       },
       {
         path: "forgot-password",

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
 import {AngularTokenService} from "angular-token";
 
 @Component({
@@ -50,6 +49,8 @@ export class LoginComponent implements OnInit {
     me.tokenService.signIn({login: this.f.username.value, password: this.f.password.value})
         .subscribe(
         res => {
+          debugger;
+          localStorage.setItem('currentUserData', JSON.stringify(me.tokenService.currentUserData));
           me.router.navigateByUrl(this.returnUrl);
         },
         error =>    {

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import { UserService } from '@app/core/services/user.service';
 import { LayoutService } from '@app/core/services/layout.service';
+import {AngularTokenService} from "angular-token";
 
 @Component({
 
@@ -8,14 +8,15 @@ import { LayoutService } from '@app/core/services/layout.service';
   templateUrl: './login-info.component.html',
 })
 export class LoginInfoComponent implements OnInit {
+  private currentUser;
 
   constructor(
-    public us: UserService,
-              private layoutService: LayoutService) {
+      private layoutService: LayoutService,
+      private tokenService: AngularTokenService) {
   }
 
   ngOnInit() {
-    debugger;
+    this.currentUser = this.tokenService.currentUserData ? this.tokenService.currentUserData : JSON.parse(localStorage.getItem('currentUserData'));
   }
 
   toggleShortcut() {
