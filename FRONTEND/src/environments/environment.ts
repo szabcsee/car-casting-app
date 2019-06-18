@@ -15,11 +15,5 @@ export const environment = {
   log: {
     auth: false,
     store: false,
-  },
-
-  smartadmin: {
-    api: null,
-    db: 'smartadmin-angular'
   }
-
 };

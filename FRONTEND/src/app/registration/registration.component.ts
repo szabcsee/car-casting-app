@@ -1,7 +1,5 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularTokenService} from "angular-token";
 
@@ -13,7 +11,6 @@ import {AngularTokenService} from "angular-token";
 export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   submitted = false;
-  bsModalRef: BsModalRef;
   output;
 
   constructor(
@@ -21,7 +18,6 @@ export class RegistrationComponent implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private tokenService: AngularTokenService,
-      private modalService: BsModalService
   ) {}
  
    ngOnInit() {
@@ -56,22 +52,5 @@ export class RegistrationComponent implements OnInit {
           me.registrationForm.reset();
         }
     );
-    console.log(this.tokenService.currentUserData);
-    console.log(this.tokenService.currentAuthData);
-
-    //this.router.navigate(['/dashboard'])
-  }
-
-  openModal(event, template: TemplateRef<any>) {
-    event.preventDefault();
-    this.bsModalRef = this.modalService.show(template);
-  }
-
-  onTermsAgree(){
-    this.bsModalRef.hide()
-  }
-
-  onTermsClose(){
-    this.bsModalRef.hide()
   }
 }

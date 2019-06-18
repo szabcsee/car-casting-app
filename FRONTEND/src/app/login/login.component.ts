@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
     me.tokenService.signIn({login: this.f.username.value, password: this.f.password.value})
         .subscribe(
         res => {
-          debugger;
           localStorage.setItem('currentUserData', JSON.stringify(me.tokenService.currentUserData));
           me.router.navigateByUrl(this.returnUrl);
         },

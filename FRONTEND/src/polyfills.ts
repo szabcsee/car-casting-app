@@ -34,9 +34,6 @@ import 'core-js/es6/map';
 import 'core-js/es6/weak-map';
 import 'core-js/es6/set';
 
-/** IE10 and IE11 requires the following for NgClass support on SVG elements */
-import 'classlist.js';  // Run `npm install --save classlist.js`.
-
 /** IE10 and IE11 requires the following for the Reflect API. */
 import 'core-js/es6/reflect';
 
@@ -87,15 +84,3 @@ declare var require: any;
 import * as jQuery from 'jquery'
 window['jQuery'] = jQuery
 window['$'] = jQuery
-// import 'jquery-ui-npm/jquery-ui.min.js'
-
-
-// require('bootstrap/js/tooltip.js'); // required for X-editable
-// require('bootstrap/js/popover.js'); // required for X-editable
-// require('bootstrap/js/dropdown.js'); // required for bootstrap-colorpicker
-// require('bootstrap/js/tab.js'); //
-// require('bootstrap/js/modal.js'); //
-
-window['moment'] = require('moment');
-
-require('smartadmin-plugins/notification/SmartNotification.min.js');

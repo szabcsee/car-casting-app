@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
 import {AngularTokenService} from "angular-token";
 
-
 @Component({
     selector: 'app-root',
     template: '<router-outlet></router-outlet>',

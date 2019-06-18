@@ -6,8 +6,6 @@ import { NgModule } from '@angular/core';
 import { environment} from "@env/environment";
 import { AppComponent } from './app.component';
 import { routing } from './app-routing.module';
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
 import { CalcModule } from './calc/calc.module';
 import { HomeComponent } from './home/';
 import { LoginComponent } from './login/';
@@ -32,8 +30,6 @@ import {RegistrationComponent} from './registration/';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule,
-    CoreModule,
     CalcModule,
     AngularTokenModule.forRoot({
           apiBase: environment.token_auth_config.apiBase,
