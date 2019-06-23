@@ -12,6 +12,7 @@ import { LoginComponent } from './login/';
 import { ForgotComponent } from './forgot/forgot.component';
 import {AngularTokenModule, AngularTokenService} from "angular-token";
 import {RegistrationComponent} from './registration/';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {RegistrationComponent} from './registration/';
     HomeComponent,
     LoginComponent,
     ForgotComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

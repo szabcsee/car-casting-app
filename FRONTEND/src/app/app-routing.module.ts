@@ -10,16 +10,13 @@ const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
+        canActivate: [AngularTokenService],
         pathMatch: 'full',
-        children: []
-    }, {
-        path: 'home',
-        component: HomeComponent,
-        canActivate: [AngularTokenService],
-    }, {
-        path: "calc",
-        component: CalcComponent,
-        canActivate: [AngularTokenService],
+        children: [{
+            path: "calc",
+            component: CalcComponent,
+            canActivate: [AngularTokenService]
+        }]
     }, {
         path: "forgot-password",
         component: ForgotComponent
