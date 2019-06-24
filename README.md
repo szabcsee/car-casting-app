@@ -1,4 +1,7 @@
-# README
+# DIGITALYOGIS CMS
+This application will become the digitalyogis CMS/CRM barebone app
+
+# SMART ADMIN RAILS APP README
 
 This documentation describes how to set up the application, its components, how
 to deploy it, and some internal information.
