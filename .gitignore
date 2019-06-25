@@ -26,8 +26,10 @@ Gemfile.lock
 # IntelliJ settings
 /.idea/*
 /.idea
-
 /FRONTEND/node_modules/*
 /FRONTEND/node_modules
 /FRONTEND/package-lock.json
 
+/.DS_Store
+/app/.DS_Store
+/app/assets/.DS_Store
