@@ -11,7 +11,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(
-  email: 'smartadmin@example.org',
-  password: 'smartadmin',
-  admin: true
+    email: 'smartadmin@example.org',
+    password: 'smartadmin',
+    admin: true
+)
+Setting.create(
+    theme: 'smart-style-1',
+    new_user_registration: true
 )

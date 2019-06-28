@@ -6,7 +6,7 @@ class MiscellaneousController < ApplicationController
   end
 
   def register
-    @simulate_no_user = true
+    @user = User.new
   end
 
   def forgot_password

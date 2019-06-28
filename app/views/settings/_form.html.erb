@@ -1,0 +1,35 @@
+<%= form_for(setting, html: {class: 'smart-form' })  do |f| %>
+  <% if setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(setting.errors.count, "error") %> prohibited this setting from being saved:</h2>
+
+      <ul>
+      <% setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset>
+    <section class="col col-5">
+      <div class="field">
+        <%= f.label :theme %>
+        <label class="select">
+          <%= f.select(:theme, options_for_select(@theme_options), class: 'input-lg') %>
+          <i></i>
+        </label>
+      </div>
+    </section>
+    <section class="col col5">
+      <div class="field">
+        <label class="toggle">
+          <%= f.check_box :new_user_registration %>
+          <i data-swchon-text="OK" data-swchoff-text="NO"></i><%= f.label :new_user_registration %></label>
+      </div>
+    </section>
+  </fieldset>
+  <footer>
+    <%= f.submit(class: 'btn btn-primary') %>
+    <%= link_to 'Back', settings_path, class: 'btn btn-default' %>
+  </footer>
+<% end %>

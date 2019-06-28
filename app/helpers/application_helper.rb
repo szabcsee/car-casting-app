@@ -129,7 +129,12 @@ module ApplicationHelper
       {
         href: root_path,
         title: _('blank'),
-        content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + _('Blank') + "</span>",
+        content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + _('Dashboard') + "</span>",
+      },
+      {
+          href: settings_path,
+          title: _('blank'),
+          content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('Settings') + "</span>",
       },
     ]
   end

@@ -1,0 +1,40 @@
+<div id="ribbon">
+  <!-- breadcrumb -->
+  <ol class="breadcrumb">
+    <li>Home</li>
+    <li>Settings</li>
+  </ol>
+</div>
+<h2 class="row-seperator-header"><i class="fa fa-gear"></i> Application Settings </h2>
+<div class="col-sm-12">
+  <div class="well">
+    <div class="row">
+      <div class="col-sm-6">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th style="width:50%">Setting name</th>
+            <th style="width:50%">Setting value</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td style="width:50%">Theme</td>
+            <td style="width:50%"><%= @setting.theme %></td>
+          </tr>
+          <tr>
+            <td>New User Registration Allowed</td>
+            <td><%= @setting.new_user_registration %></td>
+          </tr>
+          </tbody>
+        </table>
+        <%= link_to 'Edit', edit_setting_path(@setting), class: 'btn btn-primary' %>
+      </div>
+      <div class="col-sm-6">
+        <div class="text-center">
+          Here you can configure the application's main settings according to your needs.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
