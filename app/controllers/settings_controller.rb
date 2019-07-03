@@ -14,6 +14,18 @@ class SettingsController < ApplicationController
 
   # GET /settings/1/edit
   def edit
+    ### FOR FUTURE REFERENCE TO EXTEND THE OPTIONS FOR STYLE CONFIG ###
+    # 'smart-style-{SKIN#}'
+    # 'smart-rtl'         - Switch theme mode to RTL
+    # 'menu-on-top'       - Switch to top navigation (no DOM change required)
+    # 'no-menu'			  - Hides the menu completely
+    # 'hidden-menu'       - Hides the main menu but still accessable by hovering over left edge
+    # 'fixed-header'      - Fixes the header
+    # 'fixed-navigation'  - Fixes the main menu
+    # 'fixed-ribbon'      - Fixes breadcrumb
+    # 'fixed-page-footer' - Fixes footer
+    # 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
+    ###
     @theme_options = [
         ['Smart Default','smart-style-0'],
         ['Dark Elegance','smart-style-1'],

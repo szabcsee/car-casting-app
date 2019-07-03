@@ -82,7 +82,7 @@ Use search to find needed section.
   * 'fixed-page-footer' - Fixes footer
   * 'container'         - boxed layout mode (non-responsive: will not work with fixed-navigation & fixed-ribbon)
 -->
-<body class="<%= yield :body_class %>">
+<body class="<%= get_body_class %>">
 
 <!-- HEADER -->
 <%= render partial: 'layouts/header' unless @lock_screen %>

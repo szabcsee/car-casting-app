@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  resources :user_profiles
   resources :settings
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'miscellaneous#blank_page'
+  root 'home#index'
   # Miscellaneous
   get 'miscellaneous/login',
       to: 'miscellaneous#login',

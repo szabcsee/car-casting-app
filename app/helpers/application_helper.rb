@@ -11,6 +11,11 @@ module ApplicationHelper
     locale_list.detect {|entry| entry[:locale] == locale}
   end
 
+  def get_body_class
+    body_class = Setting.first
+    body_class.theme
+  end
+
   def locale_list
     [
       {

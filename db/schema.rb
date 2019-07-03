@@ -10,13 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190628143838) do
+ActiveRecord::Schema.define(version: 20190629100343) do
 
   create_table "settings", force: :cascade do |t|
     t.string   "theme"
     t.boolean  "new_user_registration"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.string   "post_code"
+    t.string   "city"
+    t.string   "address2"
+    t.string   "address1"
+    t.string   "telephone"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,6 +43,8 @@ ActiveRecord::Schema.define(version: 20190628143838) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin"
+    t.string   "first_name"
+    t.string   "last_name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true

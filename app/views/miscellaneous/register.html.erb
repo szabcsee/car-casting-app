@@ -75,9 +75,20 @@
             </section>
 
             <section>
-              <label class="checkbox">
-                <input type="checkbox" name="subscription" id="subscription">
-                <i></i>I want to receive news and special offers</label>
+              <label class="label">First Name</label>
+              <label class="input"> <i class="icon-append fa fa-user"></i>
+                <%= f.text_field :first_name, autofocus: true %>
+                <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter your first name</b></label>
+            </section>
+
+            <section>
+              <label class="label">Last name</label>
+              <label class="input"> <i class="icon-append fa fa-user"></i>
+                <%= f.text_field :last_name, autofocus: true %>
+                <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> Please enter your last_name</b></label>
+            </section>
+
+            <section>
               <label class="checkbox">
                 <input type="checkbox" name="terms" id="terms">
                 <i></i>I agree with the <a href="#" data-toggle="modal" data-target="#myModal"> Terms and Conditions </a></label>
