@@ -66,3 +66,4 @@ gem 'devise'
 
 # I18n
 gem 'gettext_i18n_rails'
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
