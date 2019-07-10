@@ -10,32 +10,32 @@
         <span class="iconbox"> <i class="fa fa-car fa-4x"></i> <span>My Vehicles <span class="label pull-right bg-color-darken">14</span></span> </span>
       <% end %>
     </li>
-	<% if current_user.admin %>
-    <li>
-      <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-red' do %>
-        <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>All Vehicles <span class="label pull-right bg-color-darken">14</span></span> </span>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-red' do %>
-        <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>All Users</span> </span>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-blue' do %>
-        <span class="iconbox"> <i class="fa fa-gear fa-4x"></i> <span>Settings</span> </span>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-blueDark' do %>
-        <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
-      <% end %>
-    </li>
-    <li>
-      <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-greenLight' do %>
-        <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span>
-      <% end %>
-    </li>
-	<% end %>
+    <% if current_user.admin %>
+      <li>
+        <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-red' do %>
+          <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>All Vehicles <span class="label pull-right bg-color-darken">14</span></span> </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-red' do %>
+          <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>All Users</span> </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-blue' do %>
+          <span class="iconbox"> <i class="fa fa-gear fa-4x"></i> <span>Settings</span> </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-blueDark' do %>
+          <span class="iconbox"> <i class="fa fa-book fa-4x"></i> <span>Invoice <span class="label pull-right bg-color-darken">99</span></span> </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-greenLight' do %>
+          <span class="iconbox"> <i class="fa fa-picture-o fa-4x"></i> <span>Gallery </span> </span>
+        <% end %>
+      </li>
+    <% end %>
   </ul>
 </div>
