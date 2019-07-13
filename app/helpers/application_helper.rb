@@ -1,7 +1,8 @@
 # :nodoc:
 module ApplicationHelper
-  def left_menu(current_user)
-    left_menu_entries(left_menu_content)
+  def left_menu
+    filtered_content = filter_left_menu_content(left_menu_content)
+    left_menu_entries(filtered_content)
   end
 
   private
@@ -136,6 +137,20 @@ module ApplicationHelper
             title: _('blank'),
             content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + _('Home') + "</span>",
             admin: false,
+            profile: false
+        },
+        {
+            href: user_profile_path(current_user.id),
+            title: _('blank'),
+            content: "<i class='fa fa-lg fa-fw fa-user'></i> <span class='menu-item-parent'>" + _('My Profile') + "</span>",
+            admin: false,
+            profile: true
+        },
+        {
+            href: user_profiles_path,
+            title: _('blank'),
+            content: "<i class='fa fa-lg fa-fw fa-list'></i> <span class='menu-item-parent'>" + _('Profiles') + "</span>",
+            admin: true,
             profile: true
         },
         {
@@ -143,23 +158,22 @@ module ApplicationHelper
             title: _('blank'),
             content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('Settings') + "</span>",
             admin: false,
-            profile: true
+            profile: false
         },
-        {
-            href: user_profile_path(current_user.id),
-            title: _('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('My Profile') + "</span>",
-            admin: false,
-            profile: true
-        },
-        {
-            href: user_profiles_path,
-            title: _('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('Profiles') + "</span>",
-            admin: true,
-            profile: true
-        }
     ]
+  end
+
+  def filter_left_menu_content(content_array)
+    profile_available = session[:user_profile].present?
+    content_array.each do |item|
+      if item[:admin] == true && (current_user.admin == false || current_user.admin.nil?)
+        content_array.delete(item)
+      end
+      if item[:profile] == true && profile_available == false
+        content_array.delete(item)
+      end
+    end
+    return content_array
   end
 
 end

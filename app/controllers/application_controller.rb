@@ -11,10 +11,4 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:admin, :first_name, :last_name])
   end
 
-  def configure_user_settings
-    @profile = UserProfile.find_by_user_id current_user.id
-    if @profile
-      session[:profile] = @profile
-    end
-  end
 end
