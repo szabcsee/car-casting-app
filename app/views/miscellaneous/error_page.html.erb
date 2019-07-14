@@ -1,0 +1,28 @@
+<% content_for :ribbon do %>
+  <!-- RIBBON -->
+  <div id="ribbon">
+
+    <!-- breadcrumb -->
+    <ol class="breadcrumb">
+      <li>Home</li>
+      <li>Error</li>
+    </ol>
+  </div>
+<% end %>
+<div id="content">
+  <div class="col-sm-12 col-md-12 col-lg-6">
+
+    <div class="well">
+      <h3><%= params[:title] %></h3>
+
+      <div class="jumbotron">
+        <p><%= params[:body] %></p>
+        <%= link_to 'Back', root_path, class: 'btn btn-primary btn-lg' %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :scripts do %>
+// Empty
+<% end %>

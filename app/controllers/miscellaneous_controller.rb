@@ -20,4 +20,7 @@ class MiscellaneousController < ApplicationController
 
   def blank_page
   end
+
+  def error_page
+  end
 end

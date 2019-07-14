@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get 'miscellaneous/locked_screen',
       to: 'miscellaneous#locked_screen',
       as: :miscellaneous_locked_screen
+  get 'miscellaneous/error_page',
+      to: 'miscellaneous#error_page',
+      as: :error_page
 
   # AJAX
   get 'ajax/email_compose', to: 'ajax#email_compose', as: :ajax_email_compose
