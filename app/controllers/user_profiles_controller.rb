@@ -26,9 +26,11 @@ class UserProfilesController < ApplicationController
   # POST /user_profiles.json
   def create
     @user_profile = UserProfile.new(user_profile_params)
+    @user_profile.user_id = current_user.id
 
     respond_to do |format|
       if @user_profile.save
+        session[:user_profile] = @user_profile
         format.html { redirect_to @user_profile, notice: 'User profile was successfully created.' }
         format.json { render :show, status: :created, location: @user_profile }
       else
@@ -65,7 +67,14 @@ class UserProfilesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_profile
-      @user_profile = UserProfile.find(params[:id])
+      if current_user.admin
+        @user_profile = UserProfile.find(params[:id])
+      else
+        @user_profile = UserProfile.find_by_user_id current_user.id
+        if @user_profile.user_id != current_user.id
+          redirect_to @user_profile, notice: "You don't have admin rights to modify or view other user's profile."
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
