@@ -176,4 +176,9 @@ module ApplicationHelper
     return content_array
   end
 
+  def user_profile
+    if session[:user_profile].present?
+      return session[:user_profile]
+    end
+  end
 end
