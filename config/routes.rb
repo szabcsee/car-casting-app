@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :vehicle_models
+  resources :vehicle_brands
+  resources :vehicles
+  resources :vehicle_extras
+  resources :vehicle_categories
+  resources :vehicle_conditions
+  resources :vehicle_fuels
+  resources :vehicle_bodies
+  resources :vehicle_types
   resources :user_profiles
   resources :settings
   devise_for :users, controllers: { sessions: 'users/sessions' }
@@ -20,7 +29,9 @@ Rails.application.routes.draw do
   get 'miscellaneous/error_page',
       to: 'miscellaneous#error_page',
       as: :error_page
-
+  get 'my_vehicles/:id',
+      to: 'vehicles#find_by_user',
+      as: :my_vehicle
   # AJAX
   get 'ajax/email_compose', to: 'ajax#email_compose', as: :ajax_email_compose
   get 'ajax/email_list', to: 'ajax#email_list', as: :ajax_email_list

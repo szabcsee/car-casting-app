@@ -1,0 +1,2 @@
+module VehicleExtrasHelper
+end

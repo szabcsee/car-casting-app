@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Vehicle Conditions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @vehicle_conditions.each do |vehicle_condition| %>
+      <tr>
+        <td><%= vehicle_condition.name %></td>
+        <td><%= link_to 'Show', vehicle_condition %></td>
+        <td><%= link_to 'Edit', edit_vehicle_condition_path(vehicle_condition) %></td>
+        <td><%= link_to 'Destroy', vehicle_condition, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Vehicle Condition', new_vehicle_condition_path %>

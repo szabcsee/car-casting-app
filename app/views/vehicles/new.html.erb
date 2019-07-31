@@ -1,0 +1,28 @@
+
+<!-- Widget ID (each widget will need unique ID)-->
+<div class="jarviswidget well" id="new-vehicles" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">
+  <header>
+    <span class="widget-icon"> <i class="fa fa-car"></i> </span>
+    <h2>New Vehicle</h2>
+  </header>
+  <div>
+    <div class="widget-body">
+      <hr class="simple">
+      <ul id="VehicleTypes" class="nav nav-tabs bordered">
+        <% @vehicleTypes.each do |vehicle| %>
+          <li>
+            <a href="#<%= vehicle.slugified_name %>" data-toggle="tab"><i class="fa fa-fw fa-lg fa-car <%= vehicle.slugified_name %>"></i><%= vehicle.name %></a>
+          </li>
+        <% end %>
+      </ul>
+      <div id="myTabContent1" class="tab-content padding-10">
+        <% @vehicleTypes.each do |vehicle| %>
+          <div class="tab-pane fade in active" id="<%= vehicle.slugified_name %>">
+            <%= render vehicle.slugified_name , vehicle: @vehicle %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= link_to 'Back', vehicles_path %>

@@ -1,0 +1,2 @@
+class VehicleCondition < ApplicationRecord
+end

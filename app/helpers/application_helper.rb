@@ -154,6 +154,36 @@ module ApplicationHelper
             profile: true
         },
         {
+            href: '#',
+            title: _('Vehicles'),
+            content: "<i class='fa fa-lg fa-fw fa-car'></i> <span class='menu-item-parent'>" + _('Vehicles') + "</span>",
+            admin: false,
+            profile: false,
+            children: [
+                {
+                    href: vehicles_path,
+                    title: _('List Vehicles'),
+                    content: "<span class='menu-item-parent'>" + _('List Vehicles') + "</span>",
+                    admin: true,
+                    profile: false
+                },
+                {
+                    href: my_vehicle_path(current_user.id),
+                    title: _('My Vehicles'),
+                    content: "<span class='menu-item-parent'>" + _('My Vehicles') + "</span>",
+                    admin: false,
+                    profile: false
+                },
+                {
+                    href: new_vehicle_path,
+                    title: _('New Vehicle'),
+                    content: "<span class='menu-item-parent'>" + _('New Vehicles') + "</span>",
+                    admin: false,
+                    profile: false
+                }
+            ]
+        },
+        {
             href: settings_path,
             title: _('blank'),
             content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('Settings') + "</span>",
@@ -171,6 +201,9 @@ module ApplicationHelper
       end
       if item[:profile] == true && profile_available == false
         content_array.delete(item)
+      end
+      if item[:children].present?
+        item[:children] = filter_left_menu_content(item[:children])
       end
     end
     return content_array
