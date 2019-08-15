@@ -1,27 +1,74 @@
-<%= form_for(vehicle_extra) do |f| %>
-  <% if vehicle_extra.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(vehicle_extra.errors.count, "error") %> prohibited this vehicle_extra from being saved:</h2>
 
-      <ul>
-      <% vehicle_extra.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="jarviswidget" id="wid-id-vehicle-extra" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false">
+  <!-- widget options:
+  usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+  data-widget-colorbutton="false"
+  data-widget-editbutton="false"
+  data-widget-togglebutton="false"
+  data-widget-deletebutton="false"
+  data-widget-fullscreenbutton="false"
+  data-widget-custombutton="false"
+  data-widget-collapsed="true"
+  data-widget-sortable="false"
+
+  -->
+  <header>
+    <span class="widget-icon"> <i class="fa fa-car"></i> </span>
+    <h2>New Vehicle extra </h2>
+  </header>
+
+  <!-- widget div-->
+  <div>
+    <!-- widget edit box -->
+    <div class="jarviswidget-editbox">
+      <!-- This area used as dropdown edit box -->
+
     </div>
+    <!-- end widget edit box -->
+
+    <!-- widget content -->
+    <div class="widget-body">
+      <%= form_for(vehicle_extra, html: { class: 'smart-form'} ) do |f| %>
+      <% if vehicle_extra.errors.any? %>
+      <fieldset>
+        <section>
+          <div id="error_explanation">
+            <h2><%= pluralize(vehicle_brand.errors.count, "error") %> prohibited this vehicle_extra from being saved:</h2>
+
+            <ul>
+            <% vehicle_extra.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        </section>
+      </fieldset>
+      <% end %>
+        <fieldset>
+            <section>
+                <label class="label"> Name</label>
+                <label class="input">
+                <%= f.text_field :name, class: "input" %>
+                </label>
+            </section>
+            <section>
+              <label> Vehicle Type </label>
+              <label class="select">
+                <%= f.select(:vehicle_type_id) do %>
+                <%= options_from_collection_for_select(@vehicle_types, 'id', 'name', vehicle_extra.vehicle_type_id) %>
+                <% end %>
+                <i class="icon-append fa fa-vehicle"></i></label>
+            </section>
+        </fieldset>
+        <footer>
+          <%= f.button "Save Brand", class: "btn btn-primary" %>
+        </footer>
+      </div>
+      <!-- end widget content -->
+
+    </div>
+    <!-- end widget div -->
+
+  </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :vehicle_type_id %>
-    <%= f.text_field :vehicle_type_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
