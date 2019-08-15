@@ -24,6 +24,9 @@ class VehicleTypesController < ApplicationController
   # POST /vehicle_types
   # POST /vehicle_types.json
   def create
+    if !authorized_vehicle_type(vehicle_type_params)
+      redirect_to 'vehicle_types#index', notice: 'Unprocessable entity'
+    end
     @vehicle_type = VehicleType.new(vehicle_type_params)
 
     respond_to do |format|
@@ -40,6 +43,9 @@ class VehicleTypesController < ApplicationController
   # PATCH/PUT /vehicle_types/1
   # PATCH/PUT /vehicle_types/1.json
   def update
+    if !authorized_vehicle_type(vehicle_type_params)
+      redirect_to 'vehicle_types#index', notice: 'Unprocessable entity'
+    end
     respond_to do |format|
       if @vehicle_type.update(vehicle_type_params)
         format.html { redirect_to @vehicle_type, notice: 'Vehicle type was successfully updated.' }
@@ -54,6 +60,9 @@ class VehicleTypesController < ApplicationController
   # DELETE /vehicle_types/1
   # DELETE /vehicle_types/1.json
   def destroy
+    if !authorized_vehicle_type(vehicle_type_params)
+      redirect_to 'vehicle_types#index', notice: 'Unprocessable entity'
+    end
     @vehicle_type.destroy
     respond_to do |format|
       format.html { redirect_to vehicle_types_url, notice: 'Vehicle type was successfully destroyed.' }
@@ -63,6 +72,11 @@ class VehicleTypesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def authorized_vehicle_type(vehicle_type_params)
+      allowed_types = ['Személyautó', 'Kishaszonjármű', 'Haszonjármű', 'Munkagép', 'Motorkerékpár', 'Autóbusz']
+      allowed_types.include?(vehicle_type_params.name)
+    end
+
     def set_vehicle_type
       @vehicle_type = VehicleType.find(params[:id])
     end

@@ -10,15 +10,18 @@ class VehicleExtrasController < ApplicationController
   # GET /vehicle_extras/1
   # GET /vehicle_extras/1.json
   def show
+    @vehicle_type = VehicleType.find @vehicle_extra.vehicle_type_id
   end
 
   # GET /vehicle_extras/new
   def new
+    @vehicle_types = VehicleType.all
     @vehicle_extra = VehicleExtra.new
   end
 
   # GET /vehicle_extras/1/edit
   def edit
+    @vehicle_types = VehicleType.all
   end
 
   # POST /vehicle_extras

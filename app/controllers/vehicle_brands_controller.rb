@@ -10,15 +10,18 @@ class VehicleBrandsController < ApplicationController
   # GET /vehicle_brands/1
   # GET /vehicle_brands/1.json
   def show
+    @vehicle_type = VehicleType.find @vehicle_brand.vehicle_type_id
   end
 
   # GET /vehicle_brands/new
   def new
+    @vehicle_types = VehicleType.all
     @vehicle_brand = VehicleBrand.new
   end
 
   # GET /vehicle_brands/1/edit
   def edit
+    @vehicle_types = VehicleType.all
   end
 
   # POST /vehicle_brands
@@ -69,6 +72,6 @@ class VehicleBrandsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_brand_params
-      params.require(:vehicle_brand).permit(:name)
+      params.require(:vehicle_brand).permit(:name, :vehicle_type_id)
     end
 end

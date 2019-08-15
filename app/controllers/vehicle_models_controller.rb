@@ -10,22 +10,24 @@ class VehicleModelsController < ApplicationController
   # GET /vehicle_models/1
   # GET /vehicle_models/1.json
   def show
+    @vehicle_brand = VehicleBrand.find @vehicle_brand.vehicle_brand_id
   end
 
   # GET /vehicle_models/new
   def new
     @vehicle_model = VehicleModel.new
+    @vehicle_brands = VehicleBrand.all
   end
 
   # GET /vehicle_models/1/edit
   def edit
+    @vehicle_brands = VehicleBrand.all
   end
 
   # POST /vehicle_models
   # POST /vehicle_models.json
   def create
     @vehicle_model = VehicleModel.new(vehicle_model_params)
-
     respond_to do |format|
       if @vehicle_model.save
         format.html { redirect_to @vehicle_model, notice: 'Vehicle model was successfully created.' }

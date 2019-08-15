@@ -59,8 +59,10 @@ ActiveRecord::Schema.define(version: 20190731051634) do
 
   create_table "vehicle_brands", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "vehicle_type_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["vehicle_type_id"], name: "index_vehicle_brands_on_vehicle_type_id"
   end
 
   create_table "vehicle_categories", force: :cascade do |t|
