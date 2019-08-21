@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20190731051634) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "name"
+    t.string   "brand"
     t.string   "type"
     t.string   "subCategory"
     t.string   "subType"

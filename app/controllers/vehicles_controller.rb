@@ -24,13 +24,13 @@ class VehiclesController < ApplicationController
 
     if @vehicles
       respond_to do |format|
-        format.html { render :index }
-        format.json { render json: @vehicles }
+        format.html {render :index}
+        format.json {render json: @vehicles}
       end
     else
       respond_to do |format|
-        format.html { redirect_to vehicles_url, notice: 'Could not find any vehicles.' }
-        format.json { head :no_content }
+        format.html {redirect_to vehicles_url, notice: 'Could not find any vehicles.'}
+        format.json {head :no_content}
       end
     end
   end
@@ -39,6 +39,8 @@ class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
     @vehicleTypes = VehicleType.all
+    @vehicleBrands = fetch_brands(@vehicleTypes)
+
   end
 
   # GET /vehicles/1/edit
@@ -52,11 +54,11 @@ class VehiclesController < ApplicationController
 
     respond_to do |format|
       if @vehicle.save
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully created.' }
-        format.json { render :show, status: :created, location: @vehicle }
+        format.html {redirect_to @vehicle, notice: 'Vehicle was successfully created.'}
+        format.json {render :show, status: :created, location: @vehicle}
       else
-        format.html { render :new }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.html {render :new}
+        format.json {render json: @vehicle.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -66,11 +68,11 @@ class VehiclesController < ApplicationController
   def update
     respond_to do |format|
       if @vehicle.update(vehicle_params)
-        format.html { redirect_to @vehicle, notice: 'Vehicle was successfully updated.' }
-        format.json { render :show, status: :ok, location: @vehicle }
+        format.html {redirect_to @vehicle, notice: 'Vehicle was successfully updated.'}
+        format.json {render :show, status: :ok, location: @vehicle}
       else
-        format.html { render :edit }
-        format.json { render json: @vehicle.errors, status: :unprocessable_entity }
+        format.html {render :edit}
+        format.json {render json: @vehicle.errors, status: :unprocessable_entity}
       end
     end
   end
@@ -80,19 +82,37 @@ class VehiclesController < ApplicationController
   def destroy
     @vehicle.destroy
     respond_to do |format|
-      format.html { redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html {redirect_to vehicles_url, notice: 'Vehicle was successfully destroyed.'}
+      format.json {head :no_content}
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vehicle
-      @vehicle = Vehicle.find(params[:id])
+
+  # Return vehicle brands
+  def fetch_brands(vehicle_types)
+    groupedBrands = VehicleBrand.all
+    vehicleBrands = {}
+    vehicleTypes = []
+    vehicle_types.each do |vehicleType|
+      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
+      vehicleBrands[vehicleType.slugified_name] = []
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def vehicle_params
-      params.require(:vehicle).permit(:name, :type, :subCategory, :subType, :model, :year, :body, :meter, :fuel, :condition, :doors, :seats, :extras, :user_id)
+    groupedBrands.each do |batch|
+      type = vehicleTypes[batch.vehicle_type_id]
+      vehicleBrands[type].push batch
     end
+    return vehicleBrands
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vehicle
+    @vehicle = Vehicle.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def vehicle_params
+    params.require(:vehicle).permit(:name, :type, :brand, :subCategory, :subType, :model, :year, :body, :meter, :fuel, :condition, :doors, :seats, :extras, :user_id)
+  end
 end

@@ -18,8 +18,13 @@
   </div>
 
   <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
+    <%= f.hidden_field :type, value: 'autobusz' %>
+  </div>
+  <div class="field">
+    <%= f.label :brand %>
+    <%= f.select(:brand) do %>
+      <%= options_from_collection_for_select(@vehicleBrands['autobusz'], 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -39,7 +44,7 @@
 
   <div class="field">
     <%= f.label :year %>
-    <%= f.date_select :year %>
+    <%= f.date_select :year, discard_day: true, discard_month: true %>
   </div>
 
   <div class="field">
