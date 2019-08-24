@@ -1,5 +1,4 @@
-<h3>Motorkerék</h3>
-<%= form_for(vehicle) do |f| %>
+<%= form_for(vehicle, html: { class: 'smart-form'}) do |f| %>
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
@@ -28,10 +27,7 @@
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :subCategory %>
-    <%= f.text_field :subCategory %>
-  </div>
+  <%= f.hidden_field :subCategory %>
 
   <div class="field">
     <%= f.label :subType %>
@@ -50,7 +46,9 @@
 
   <div class="field">
     <%= f.label :body %>
-    <%= f.text_field :body %>
+    <%= f.select(:body) do %>
+      <%= options_from_collection_for_select(@vehicleBodies['motorkerekpar'], 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -60,12 +58,16 @@
 
   <div class="field">
     <%= f.label :fuel %>
-    <%= f.text_field :fuel %>
+    <%= f.select(:fuel) do %>
+      <%= options_from_collection_for_select(@vehicleFuels, 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= f.label :condition %>
-    <%= f.text_field :condition %>
+    <%= f.select(:condition) do %>
+      <%= options_from_collection_for_select(@vehicleConditions, 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -83,12 +85,20 @@
     <%= f.text_field :extras %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
+  <% if @users %>
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.select(:user_id) do %>
+        <%= options_from_collection_for_select(@users, 'id', 'email') %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <footer>
+    <div class="actions">
+      <%= f.submit( class: 'btn btn-success' )%>
+    </div>
+  </footer>
 <% end %>

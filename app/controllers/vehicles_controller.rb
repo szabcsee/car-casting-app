@@ -39,7 +39,14 @@ class VehiclesController < ApplicationController
   def new
     @vehicle = Vehicle.new
     @vehicleTypes = VehicleType.all
+    @vehicleConditions = VehicleCondition.all
     @vehicleBrands = fetch_brands(@vehicleTypes)
+    @vehicleCategories = fetch_categories(@vehicleTypes)
+    @vehicleBodies = fetch_bodies(@vehicleTypes)
+    @vehicleFuels = VehicleFuel.all
+    if current_user.admin
+      @users = User.all
+    end
 
   end
 
@@ -66,6 +73,7 @@ class VehiclesController < ApplicationController
   # PATCH/PUT /vehicles/1
   # PATCH/PUT /vehicles/1.json
   def update
+
     respond_to do |format|
       if @vehicle.update(vehicle_params)
         format.html {redirect_to @vehicle, notice: 'Vehicle was successfully updated.'}
@@ -104,6 +112,40 @@ class VehiclesController < ApplicationController
       vehicleBrands[type].push batch
     end
     return vehicleBrands
+  end
+
+  def fetch_categories(vehicle_types)
+    categories = VehicleCategory.all
+    vehicleCategories = {}
+    vehicleTypes = []
+    vehicle_types.each do |vehicleType|
+      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
+      vehicleCategories[vehicleType.slugified_name] = []
+    end
+
+    categories.each do |category|
+      type = vehicleTypes[category.vehicle_type_id]
+      vehicleCategories[type].push category
+    end
+    return vehicleCategories
+
+  end
+
+  # Return vehicle bodies
+  def fetch_bodies(vehicle_types)
+    bodies = VehicleBody.all
+    vehicleBodies = {}
+    vehicleTypes = []
+    vehicle_types.each do |vehicleType|
+      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
+      vehicleBodies[vehicleType.slugified_name] = []
+    end
+
+    bodies.each do |body|
+      type = vehicleTypes[body.vehicle_type_id]
+      vehicleBodies[type].push body
+    end
+    return vehicleBodies
   end
 
   # Use callbacks to share common setup or constraints between actions.

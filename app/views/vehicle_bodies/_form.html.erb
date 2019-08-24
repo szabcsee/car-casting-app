@@ -52,6 +52,14 @@
                 <%= f.text_field :name, class: "input" %>
                 </label>
             </section>
+            <section>
+              <label> Vehicle Type </label>
+              <label class="select">
+                <%= f.select(:vehicle_type_id) do %>
+                  <%= options_from_collection_for_select(@vehicle_types, 'id', 'name', vehicle_body.vehicle_type_id) %>
+                <% end %>
+                <i class="icon-append fa fa-vehicle"></i></label>
+            </section>
         </fieldset>
         <footer>
           <%= f.button "Save Vehicle Body", class: "btn btn-primary" %>

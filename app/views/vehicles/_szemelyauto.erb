@@ -1,5 +1,4 @@
-<h3>Személyautó</h3>
-<%= form_for(vehicle) do |f| %>
+<%= form_for(vehicle, html: { class: 'smart-form'}) do |f| %>
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
@@ -12,10 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+
+    <label class="input">
+      <i class="icon-prepend fa fa-user"></i>
+    <%= f.text_field :name, placeholder: :name %>
+    </label>
+
 
   <div class="field">
     <%= f.hidden_field :type, value: 'szemelyauto' %>
@@ -28,10 +29,7 @@
     <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :subCategory %>
-    <%= f.text_field :subCategory %>
-  </div>
+  <%= f.hidden_field :subCategory %>
 
   <div class="field">
     <%= f.label :subType %>
@@ -50,7 +48,9 @@
 
   <div class="field">
     <%= f.label :body %>
-    <%= f.text_field :body %>
+    <%= f.select(:body) do %>
+      <%= options_from_collection_for_select(@vehicleBodies['szemelyauto'], 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -60,12 +60,16 @@
 
   <div class="field">
     <%= f.label :fuel %>
-    <%= f.text_field :fuel %>
+    <%= f.select(:fuel) do %>
+      <%= options_from_collection_for_select(@vehicleFuels, 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= f.label :condition %>
-    <%= f.text_field :condition %>
+    <%= f.select(:condition) do %>
+      <%= options_from_collection_for_select(@vehicleConditions, 'name', 'name') %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -83,12 +87,19 @@
     <%= f.text_field :extras %>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.text_field :user_id %>
-  </div>
-
+  <% if @users %>
+    <div class="field">
+      <%= f.label :user_id %>
+      <%= f.select(:user_id) do %>
+        <%= options_from_collection_for_select(@users, 'id', 'email') %>
+      <% end %>
+    </div>
+  <% else %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  <% end %>
+  <footer>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit( class: 'btn btn-success' )%>
   </div>
+  </footer>
 <% end %>

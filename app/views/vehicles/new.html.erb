@@ -18,6 +18,7 @@
       <div id="myTabContent1" class="tab-content padding-10">
         <% @vehicleTypes.each do |vehicle| %>
           <div class="tab-pane fade <% if vehicle.slugified_name == 'szemelyauto' %>in active <% end %>" id="<%= vehicle.slugified_name %>">
+            <h3><%= vehicle.name %></h3>
             <%= render vehicle.slugified_name , vehicle: @vehicle %>
           </div>
         <% end %>
