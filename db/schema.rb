@@ -111,23 +111,30 @@ ActiveRecord::Schema.define(version: 20190731051634) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "name"
-    t.string   "brand"
-    t.string   "type"
-    t.string   "subCategory"
     t.string   "subType"
-    t.string   "model"
     t.date     "year"
-    t.string   "body"
     t.integer  "meter"
-    t.string   "fuel"
-    t.string   "condition"
     t.integer  "doors"
     t.integer  "seats"
     t.string   "extras"
+    t.integer  "vehicle_brand_id"
+    t.integer  "vehicle_type_id"
+    t.integer  "vehicle_category_id"
+    t.integer  "vehicle_model_id"
+    t.integer  "vehicle_body_id"
+    t.integer  "vehicle_condition_id"
+    t.integer  "vehicle_fuel_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["user_id"], name: "index_vehicles_on_user_id"
+    t.index ["vehicle_body_id"], name: "index_vehicles_on_vehicle_body_id"
+    t.index ["vehicle_brand_id"], name: "index_vehicles_on_vehicle_brand_id"
+    t.index ["vehicle_category_id"], name: "index_vehicles_on_vehicle_category_id"
+    t.index ["vehicle_condition_id"], name: "index_vehicles_on_vehicle_condition_id"
+    t.index ["vehicle_fuel_id"], name: "index_vehicles_on_vehicle_fuel_id"
+    t.index ["vehicle_model_id"], name: "index_vehicles_on_vehicle_model_id"
+    t.index ["vehicle_type_id"], name: "index_vehicles_on_vehicle_type_id"
   end
 
 end

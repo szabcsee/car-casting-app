@@ -32,6 +32,10 @@ Rails.application.routes.draw do
   get 'my_vehicles/:id',
       to: 'vehicles#find_by_user',
       as: :my_vehicle
+
+  get 'vehicle_models_by_brand',
+      to: 'vehicle_models#find_by_brand',
+      as: :vehicle_models_by_brand
   # AJAX
   get 'ajax/email_compose', to: 'ajax#email_compose', as: :ajax_email_compose
   get 'ajax/email_list', to: 'ajax#email_list', as: :ajax_email_list

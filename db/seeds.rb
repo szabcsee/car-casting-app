@@ -381,4 +381,10 @@ VehicleFuel.create(
         {name: 'Elektromos'},
         {name: 'Hibrid'},
     ])
+VehicleModel.create(
+    [
+        {name: 'X1', vehicle_brand_id: 4},
+        {name: 'X3', vehicle_brand_id: 4},
+        {name: 'X6', vehicle_brand_id: 4}
+    ])
 

@@ -116,6 +116,9 @@ class VehiclesController < ApplicationController
 
   def fetch_categories(vehicle_types)
     categories = VehicleCategory.all
+    if categories.empty?
+      return nil
+    end
     vehicleCategories = {}
     vehicleTypes = []
     vehicle_types.each do |vehicleType|
@@ -155,6 +158,6 @@ class VehiclesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :type, :brand, :subCategory, :subType, :model, :year, :body, :meter, :fuel, :condition, :doors, :seats, :extras, :user_id)
+    params.require(:vehicle).permit(:name, :vehicle_type_id, :vehicle_brand_id, :vehicle_category_id, :vehicle_model_id, :year, :vehicle_body_id, :meter, :vehicle_fuel_id, :vehicle_condition_id, :doors, :seats, :extras, :user_id)
   end
 end

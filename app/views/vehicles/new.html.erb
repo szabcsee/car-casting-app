@@ -10,16 +10,16 @@
       <hr class="simple">
       <ul id="VehicleTypes" class="nav nav-tabs bordered">
         <% @vehicleTypes.each do |vehicle| %>
-          <li <% if vehicle.slugified_name == 'szemelyauto' %> class='active' <% end %>>
+          <li <% if vehicle.id == 1 %> class='active' <% end %>>
             <a href="#<%= vehicle.slugified_name %>" data-toggle="tab"><i class="fa fa-fw fa-lg fa-car <%= vehicle.slugified_name %>"></i><%= vehicle.name %></a>
           </li>
         <% end %>
       </ul>
       <div id="myTabContent1" class="tab-content padding-10">
-        <% @vehicleTypes.each do |vehicle| %>
-          <div class="tab-pane fade <% if vehicle.slugified_name == 'szemelyauto' %>in active <% end %>" id="<%= vehicle.slugified_name %>">
-            <h3><%= vehicle.name %></h3>
-            <%= render vehicle.slugified_name , vehicle: @vehicle %>
+        <% @vehicleTypes.each do |vehicleType| %>
+          <div class="tab-pane fade <% if vehicleType.id == 1 %>in active <% end %>" id="<%= vehicleType.slugified_name %>">
+            <h3><%= vehicleType.name %></h3>
+            <%= render 'form', vehicle: @vehicle, vehicleType: vehicleType %>
           </div>
         <% end %>
       </div>

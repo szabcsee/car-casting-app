@@ -63,6 +63,24 @@ class VehicleModelsController < ApplicationController
     end
   end
 
+  def find_by_brand
+    @vehicle_brand = VehicleBrand.find_by(name: params[:vehicle_brand_id], vehicle_type_id: params[:vehicle_type_id])
+    @models_arr = {}
+    @models_arr[:model_data] = []
+    @models_arr[:vehicle_type_id] =  params[:vehicle_type_id]
+    @models_arr[:vehicle_brand_id] = @vehicle_brand.id
+    if !@vehicle_brand.nil?
+      @vehicle_models = VehicleModel.where(vehicle_brand_id: @vehicle_brand.id)
+      @vehicle_models.each do |model|
+        @models_arr[:model_data].push(id: model.id, name: model.name)
+      end
+    end
+
+    respond_to do |format|
+      format.json { render json: @models_arr.as_json, status: :ok }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_vehicle_model
