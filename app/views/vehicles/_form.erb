@@ -1,4 +1,4 @@
-<%= form_for(vehicle, html: { class: 'smart-form', id: "vehicle_type_#{vehicleType.id}"}) do |f| %>
+<%= form_for(vehicle, html: {class: 'smart-form', id: "vehicle_type_#{vehicleType.id}"}) do |f| %>
   <% if vehicle.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(vehicle.errors.count, "error") %> prohibited this vehicle from being saved:</h2>
@@ -10,76 +10,103 @@
       </ul>
     </div>
   <% end %>
-
-  <label class="input">
-    <i class="icon-prepend fa fa-user"></i>
-    <%= f.text_field :name, placeholder: :name %>
-  </label>
-
-
+    <section>
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-car"></i>
+          <%= f.text_field :name, placeholder: :name %>
+        </label>
+      </div>
+    </section>
   <div class="field">
     <%= f.hidden_field :vehicle_type_id, value: vehicleType.id %>
   </div>
-
-  <section>
-  <div class="field">
-    <%= f.label :vehicle_brand_id, class: 'label'%>
-    <label class="input">
-    <%= f.text_field(:vehicle_brand_id, list: 'vehicle_brand', class: 'vehicle_brand_select') %>
-      <datalist id="vehicle_brand">
-        <% @vehicleBrands[vehicleType.slugified_name].each do |brand| %>
-          <option value="<%= brand.name %>" class=""><%= brand.name %></option>
-        <% end %>
-      </datalist>
-    </label>
-  </div>
-  </section>
-
-  <% if !@vehicleCategories[vehicleType.slugified_name].empty? %>
     <section>
       <div class="field">
-        <%= f.label :vehicle_category_id, class: 'label'%>
         <label class="input">
-          <%= f.text_field(:vehicle_category_id, list: 'vehicle_category') %>
-          <datalist id="vehicle_category">
-            <% @vehicleCategories[vehicleType.slugified_name].each do |brand| %>
-              <option value="<%= brand.name %>"><%= brand.name %></option>
+          <i class="icon-prepend fa fa-star"></i>
+          <%= f.text_field(:vehicle_brand_id, list: 'vehicle_brand', class: 'vehicle_brand_select', placeholder: :vehicle_brand) %>
+          <datalist id="vehicle_brand">
+            <% @vehicleBrands[vehicleType.slugified_name].each do |brand| %>
+              <option value="<%= brand.name %>" class=""><%= brand.name %></option>
             <% end %>
           </datalist>
         </label>
       </div>
     </section>
+
+  <% if !@vehicleCategories[vehicleType.slugified_name].empty? %>
+      <section>
+        <div class="field">
+          <label class="input">
+            <i class="icon-prepend fa fa-cab"></i>
+            <%= f.text_field(:vehicle_category_id, list: 'vehicle_category', placeholder: :vehicle_category) %>
+            <datalist id="vehicle_category">
+              <% @vehicleCategories[vehicleType.slugified_name].each do |brand| %>
+                <option value="<%= brand.name %>"><%= brand.name %></option>
+              <% end %>
+            </datalist>
+          </label>
+        </div>
+      </section>
   <% else %>
     <%= f.hidden_field :vehicle_category_id, value: nil %>
   <% end %>
-
-  <section>
-    <div class="field">
-      <%= f.label :vehicle_model_id, class: 'label'%>
-      <label class="input">
-        <%= f.text_field(:vehicle_model_id, list: 'vehicle_model', class: 'vehicle_model_select', disabled:true) %>
-        <datalist id="vehicle_model">
-        </datalist>
-      </label>
-    </div>
-  </section>
-
-  <div class="field">
-    <%= f.label :year %>
-    <%= f.date_select :year, discard_day: true, discard_month: true %>
+    <section>
+      <div class="field">
+        <label class="input state-disabled">
+          <i class="icon-prepend fa fa-cube"></i>
+          <%= f.text_field(:vehicle_model_id, list: 'vehicle_model', class: 'vehicle_model_select', placeholder: :vehicle_model, disabled: true) %>
+          <datalist id="vehicle_model">
+          </datalist>
+        </label>
+      </div>
+    </section>
+  <div class="row">
+    <section class="col col-3">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-calendar"></i>
+          <!--<%= f.text_field(:year, discard_day: true, discard_month: true) %>-->
+          <input discard_day="true" discard_month="true" type="text" name="vehicle[year]" id="vehicle_year" placeholder="Year" data-mask="9999" aria-required="true" aria-invalid="true" aria-describedby="year-error">
+        </label>
+      </div>
+    </section>
+    <section class="col col-3">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-calculator"></i>
+          <%= f.number_field :meter, placeholder: :meter %>
+        </label>
+      </div>
+    </section>
+    <section class="col col-3">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-car"></i>
+          <%= f.number_field :doors, placeholder: :doors %>
+        </label>
+      </div>
+    </section>
+    <section class="col col-3">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-chain"></i>
+          <%= f.number_field :seats, placeholder: :seats %>
+        </label>
+      </div>
+    </section>
   </div>
-
-  <div class="field">
-    <%= f.label :vehicle_body_id %>
-    <%= f.select(:vehicle_body_id) do %>
-      <%= options_from_collection_for_select(@vehicleBodies[vehicleType.slugified_name], 'id', 'name') %>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :meter %>
-    <%= f.number_field :meter %>
-  </div>
+    <section>
+      <div class="field">
+        <%= f.label :vehicle_body_id %>
+        <label class="select">
+          <%= f.select(:vehicle_body_id) do %>
+            <%= options_from_collection_for_select(@vehicleBodies[vehicleType.slugified_name], 'id', 'name') %>
+          <% end %>
+        </label>
+      </div>
+    </section>
 
   <div class="field">
     <%= f.label :vehicle_fuel_id %>
@@ -93,16 +120,6 @@
     <%= f.select(:vehicle_condition_id) do %>
       <%= options_from_collection_for_select(@vehicleConditions, 'id', 'name') %>
     <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :doors %>
-    <%= f.number_field :doors %>
-  </div>
-
-  <div class="field">
-    <%= f.label :seats %>
-    <%= f.number_field :seats %>
   </div>
 
   <div class="field">
@@ -122,7 +139,7 @@
   <% end %>
   <footer>
     <div class="actions">
-      <%= f.submit( class: 'btn btn-success' )%>
+      <%= f.submit(class: 'btn btn-success') %>
     </div>
   </footer>
 <% end %>
