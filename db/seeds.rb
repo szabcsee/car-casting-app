@@ -387,4 +387,20 @@ VehicleModel.create(
         {name: 'X3', vehicle_brand_id: 4},
         {name: 'X6', vehicle_brand_id: 4}
     ])
+VehicleExtra.create(
+    [
+        {name: 'Légkondícionáló', vehicle_type_id: 1},
+        {name: 'ABS', vehicle_type_id: 1},
+        {name: 'Légkondícionáló', vehicle_type_id: 2},
+        {name: 'Bőrülés', vehicle_type_id: 2},
+        {name: 'Bőrülés', vehicle_type_id: 3},
+        {name: 'ABS', vehicle_type_id: 3},
+        {name: 'Sztereo', vehicle_type_id: 4},
+        {name: 'Légkondi', vehicle_type_id: 4},
+        {name: 'Bőrülés', vehicle_type_id: 5},
+        {name: 'ABS', vehicle_type_id: 5},
+        {name: 'Bőrülés', vehicle_type_id: 6},
+        {name: 'ABS', vehicle_type_id: 6}
+    ])
+
 

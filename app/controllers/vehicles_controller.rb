@@ -44,6 +44,7 @@ class VehiclesController < ApplicationController
     @vehicleCategories = fetch_categories(@vehicleTypes)
     @vehicleBodies = fetch_bodies(@vehicleTypes)
     @vehicleFuels = VehicleFuel.all
+    @vehicleExtras = fetch_extras(@vehicleTypes)
     if current_user.admin
       @users = User.all
     end
@@ -149,6 +150,22 @@ class VehiclesController < ApplicationController
       vehicleBodies[type].push body
     end
     return vehicleBodies
+  end
+
+  def fetch_extras(vehicle_types)
+    extras = VehicleExtra.all
+    vehicleExtras = {}
+    vehicleTypes = []
+    vehicle_types.each do |vehicleType|
+      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
+      vehicleExtras[vehicleType.slugified_name] = []
+    end
+
+    extras.each do |extra|
+      type = vehicleTypes[extra.vehicle_type_id]
+      vehicleExtras[type].push extra
+    end
+    return vehicleExtras
   end
 
   # Use callbacks to share common setup or constraints between actions.
