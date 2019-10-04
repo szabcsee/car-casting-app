@@ -145,7 +145,7 @@
     <div class="inline-group">
     <% @vehicleExtras[vehicleType.slugified_name].each do |vehicleExtra| %>
         <label class="checkbox">
-          <input type="checkbox" name="vehicle[extra[<%= vehicleExtra.id %>]]">
+          <input type="checkbox" name="vehicle[extra[<%= vehicleExtra.name %>]]">
           <i></i><%= vehicleExtra.name %></label>
     <% end %>
     </div>
