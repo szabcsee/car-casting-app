@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.2'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -56,6 +56,8 @@ group :development do
   # rake remove_annotation                        # Remove schema information from model and fixture files
   # for more info on usage: https://github.com/ctran/annotate_models
   gem 'annotate'
+
+  gem 'bootsnap'
 end
 
 group :production do

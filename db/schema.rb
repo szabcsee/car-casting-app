@@ -10,140 +10,140 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191112205121) do
+ActiveRecord::Schema.define(version: 2019_11_12_205121) do
 
   create_table "companies", force: :cascade do |t|
-    t.string   "company_type"
-    t.boolean  "vat"
-    t.string   "billing_address1"
-    t.string   "billing_address2"
-    t.string   "city"
-    t.string   "company_name"
-    t.string   "tax_number"
-    t.string   "company_number"
-    t.integer  "user_profile_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string "company_type"
+    t.boolean "vat"
+    t.string "billing_address1"
+    t.string "billing_address2"
+    t.string "city"
+    t.string "company_name"
+    t.string "tax_number"
+    t.string "company_number"
+    t.integer "user_profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_profile_id"], name: "index_companies_on_user_profile_id"
   end
 
   create_table "settings", force: :cascade do |t|
-    t.string   "theme"
-    t.boolean  "new_user_registration"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string "theme"
+    t.boolean "new_user_registration"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_profiles", force: :cascade do |t|
-    t.string   "post_code"
-    t.string   "city"
-    t.string   "address2"
-    t.string   "address1"
-    t.string   "telephone"
-    t.integer  "user_id"
+    t.string "post_code"
+    t.string "city"
+    t.string "address2"
+    t.string "address1"
+    t.string "telephone"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_user_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.boolean  "admin"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.boolean "admin"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "vehicle_bodies", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "vehicle_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "name"
+    t.integer "vehicle_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["vehicle_type_id"], name: "index_vehicle_bodies_on_vehicle_type_id"
   end
 
   create_table "vehicle_brands", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "vehicle_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "name"
+    t.integer "vehicle_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["vehicle_type_id"], name: "index_vehicle_brands_on_vehicle_type_id"
   end
 
   create_table "vehicle_categories", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "vehicle_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "name"
+    t.integer "vehicle_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["vehicle_type_id"], name: "index_vehicle_categories_on_vehicle_type_id"
   end
 
   create_table "vehicle_conditions", force: :cascade do |t|
-    t.string   "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_extras", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "vehicle_type_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string "name"
+    t.integer "vehicle_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["vehicle_type_id"], name: "index_vehicle_extras_on_vehicle_type_id"
   end
 
   create_table "vehicle_fuels", force: :cascade do |t|
-    t.string   "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "vehicle_models", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "vehicle_brand_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string "name"
+    t.integer "vehicle_brand_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["vehicle_brand_id"], name: "index_vehicle_models_on_vehicle_brand_id"
   end
 
   create_table "vehicle_types", force: :cascade do |t|
-    t.string   "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "vehicles", force: :cascade do |t|
-    t.string   "name"
-    t.date     "year"
-    t.integer  "meter"
-    t.integer  "doors"
-    t.integer  "seats"
-    t.string   "extras"
-    t.string   "mobility"
-    t.string   "driveability"
-    t.string   "act_type"
-    t.integer  "vehicle_brand_id"
-    t.integer  "vehicle_type_id"
-    t.integer  "vehicle_category_id"
-    t.integer  "vehicle_model_id"
-    t.integer  "vehicle_body_id"
-    t.integer  "vehicle_condition_id"
-    t.integer  "vehicle_fuel_id"
-    t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string "name"
+    t.date "year"
+    t.integer "meter"
+    t.integer "doors"
+    t.integer "seats"
+    t.string "extras"
+    t.string "mobility"
+    t.string "driveability"
+    t.string "act_type"
+    t.integer "vehicle_brand_id"
+    t.integer "vehicle_type_id"
+    t.integer "vehicle_category_id"
+    t.integer "vehicle_model_id"
+    t.integer "vehicle_body_id"
+    t.integer "vehicle_condition_id"
+    t.integer "vehicle_fuel_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_vehicles_on_user_id"
     t.index ["vehicle_body_id"], name: "index_vehicles_on_vehicle_body_id"
     t.index ["vehicle_brand_id"], name: "index_vehicles_on_vehicle_brand_id"
