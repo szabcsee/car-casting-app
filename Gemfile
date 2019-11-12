@@ -49,6 +49,13 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'gettext'
   gem 'get_pomo'
+
+  # Annote models with table name and attributes
+  # rake annotate_models                          # Add schema information (as comments) to model and fixture files
+  # rake annotate_routes                          # Adds the route map to routes.rb
+  # rake remove_annotation                        # Remove schema information from model and fixture files
+  # for more info on usage: https://github.com/ctran/annotate_models
+  gem 'annotate'
 end
 
 group :production do
