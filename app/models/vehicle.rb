@@ -1,6 +1,5 @@
 class Vehicle < ApplicationRecord
   include ActiveModel::Validations
-  validates_with VehicleValidator
   validates :user_id, presence: true
   validates :type, presence: true
   validates :brand, presence: true
@@ -15,3 +14,4 @@ class Vehicle < ApplicationRecord
   belongs_to :vehicle_model
   belongs_to :vehicle_type
 end
+s

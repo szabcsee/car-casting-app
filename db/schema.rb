@@ -111,7 +111,6 @@ ActiveRecord::Schema.define(version: 20190731051634) do
 
   create_table "vehicles", force: :cascade do |t|
     t.string   "name"
-    t.string   "subType"
     t.date     "year"
     t.integer  "meter"
     t.integer  "doors"
