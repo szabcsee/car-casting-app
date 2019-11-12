@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company type:</strong>
+  <%= @company.company_type %>
+</p>
+
+<p>
+  <strong>Vat:</strong>
+  <%= @company.vat %>
+</p>
+
+<p>
+  <strong>Billing address1:</strong>
+  <%= @company.billing_address1 %>
+</p>
+
+<p>
+  <strong>Billing address2:</strong>
+  <%= @company.billing_address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @company.city %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @company.company_name %>
+</p>
+
+<p>
+  <strong>Tax number:</strong>
+  <%= @company.tax_number %>
+</p>
+
+<p>
+  <strong>Company number:</strong>
+  <%= @company.company_number %>
+</p>
+
+<p>
+  <strong>User profile:</strong>
+  <%= @company.user_profile %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

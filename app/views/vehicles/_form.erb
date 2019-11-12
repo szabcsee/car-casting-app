@@ -141,13 +141,53 @@
       </div>
     </section>
   </div>
+  <div class="row">
+    <section class="col col-4">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-cab"></i>
+          <%= f.text_field(:mobility, list: 'mobility', class: 'vehicle_mobility_select', placeholder: :vehicle_mobility) %>
+          <datalist id="mobility">
+            <option value="by_itself" class="">by_itself</option>
+            <option value="trailer" class="">trailer</option>
+          </datalist>
+        </label>
+      </div>
+    </section>
+    <section class="col col-4">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-chain"></i>
+          <%= f.text_field(:driveability, list: 'driveability', class: 'vehicle_driveability_select', placeholder: :vehicle_driveability) %>
+          <datalist id="driveability">
+            <option value="stuntman" class="">Stuntman</option>
+            <option value="actor" class="">actor</option>
+            <option value="owner" class="">owner</option>
+          </datalist>
+        </label>
+      </div>
+    </section>
+    <section class="col col-4">
+      <div class="field">
+        <label class="input">
+          <i class="icon-prepend fa fa-camera-retro"></i>
+          <%= f.text_field(:act_type, list: 'act_type', class: 'vehicle_act_type_select', placeholder: :vehicle_act_type) %>
+          <datalist id="act_type">
+            <option value="stunt" class="">stunt</option>
+            <option value="playing" class="">playing</option>
+            <option value="parking" class="">parking</option>
+          </datalist>
+        </label>
+      </div>
+    </section>
+  </div>
   <section>
     <div class="inline-group">
-    <% @vehicleExtras[vehicleType.slugified_name].each do |vehicleExtra| %>
+      <% @vehicleExtras[vehicleType.slugified_name].each do |vehicleExtra| %>
         <label class="checkbox">
           <input type="checkbox" name="vehicle[extra[<%= vehicleExtra.name %>]]">
           <i></i><%= vehicleExtra.name %></label>
-    <% end %>
+      <% end %>
     </div>
   </section>
   <section>
@@ -162,23 +202,6 @@
       <%= f.hidden_field :user_id, value: current_user.id %>
     <% end %>
   </section>
-<%
-
-
-  ##komment
-
-  #szállítás:
-  #saját láb/trailer
-
-  #képek
-
-  #Szerepeltethetőség szekció
-  #parkoló autó
-  #játszó autó
-
-  #Vezetheti
-  #kaszkadőr, színész, saját magam
-%>
   <footer>
     <div class="actions">
       <%= f.submit(class: 'btn btn-success') %>

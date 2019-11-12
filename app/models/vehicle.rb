@@ -3,9 +3,12 @@
 # Table name: vehicles
 #
 #  id                   :integer          not null, primary key
+#  act_type             :string
 #  doors                :integer
+#  driveability         :string
 #  extras               :string
 #  meter                :integer
+#  mobility             :string
 #  name                 :string
 #  seats                :integer
 #  year                 :date
@@ -47,5 +50,6 @@ class Vehicle < ApplicationRecord
   belongs_to :vehicle_fuel
   belongs_to :vehicle_model
   belongs_to :vehicle_type
+
 end
 s

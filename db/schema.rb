@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190731051634) do
+ActiveRecord::Schema.define(version: 20191112205121) do
+
+  create_table "companies", force: :cascade do |t|
+    t.string   "company_type"
+    t.boolean  "vat"
+    t.string   "billing_address1"
+    t.string   "billing_address2"
+    t.string   "city"
+    t.string   "company_name"
+    t.string   "tax_number"
+    t.string   "company_number"
+    t.integer  "user_profile_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_profile_id"], name: "index_companies_on_user_profile_id"
+  end
 
   create_table "settings", force: :cascade do |t|
     t.string   "theme"
@@ -116,6 +131,9 @@ ActiveRecord::Schema.define(version: 20190731051634) do
     t.integer  "doors"
     t.integer  "seats"
     t.string   "extras"
+    t.string   "mobility"
+    t.string   "driveability"
+    t.string   "act_type"
     t.integer  "vehicle_brand_id"
     t.integer  "vehicle_type_id"
     t.integer  "vehicle_category_id"

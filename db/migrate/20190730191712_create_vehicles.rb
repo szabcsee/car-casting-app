@@ -7,6 +7,9 @@ class CreateVehicles < ActiveRecord::Migration[5.0]
       t.integer :doors
       t.integer :seats
       t.string :extras
+      t.string :mobility
+      t.string :driveability
+      t.string :act_type
       t.references :vehicle_brand, foreign_key: true
       t.references :vehicle_type, foreign_key: true
       t.references :vehicle_category, foreign_key: true
