@@ -58,7 +58,10 @@ class VehiclesController < ApplicationController
   # POST /vehicles
   # POST /vehicles.json
   def create
-    @vehicle = Vehicle.new(vehicle_params)
+    @vehicle = prepare_for_save(params[:vehicle])
+    unless authorize_user(vehicle_params[:user_id])
+      @vehicle.errors.push({type: 'Authorization', message: 'You are not supposed to edit this.'})
+    end
 
     respond_to do |format|
       if @vehicle.save
@@ -97,75 +100,88 @@ class VehiclesController < ApplicationController
   end
 
   private
+  def prepare_for_save(vehicle_params)
+    @vehicle = Vehicle.new
+    @vehicle.name = vehicle_params[:name]
+    @vehicle.vehicle_type_id = vehicle_params[:vehicle_type_id]
+    @vehicle.vehicle_brand_id = fetch_vehicle_records(VehicleBrand, 'vehicle_brand_id', 'vehicle_type_id', vehicle_params)
+    @vehicle.vehicle_model_id = fetch_vehicle_records(VehicleModel,'vehicle_model_id', 'vehicle_brand_id', vehicle_params)
+    @vehicle.vehicle_body_id = fetch_vehicle_records(VehicleBody, 'vehicle_body_id', 'vehicle_type_id', vehicle_params)
+    @vehicle.vehicle_condition_id = VehicleCondition.find_by_name(vehicle_params[:vehicle_condition_id]).id
+    @vehicle.vehicle_fuel_id = VehicleFuel.find_by_name(vehicle_params[:vehicle_fuel_id]).id
+    @vehicle.extras = transform_vehicle_extras(vehicle_params[:extra].keys)
+    @vehicle.year = vehicle_params[:year]
+    @vehicle.meter = vehicle_params[:meter]
+    @vehicle.doors = vehicle_params[:doors]
+    @vehicle.seats = vehicle_params[:seats]
+    @vehicle.user_id = vehicle_params[:user_id]
+    return @vehicle
+  end
+
+  def fetch_vehicle_records(entity, main_attribute, secondary_attribute, vehicle_params)
+    record = entity.find_by(name: vehicle_params[main_attribute], secondary_attribute => vehicle_params[secondary_attribute])
+    if record
+      return record.id
+    else
+      new_record = entity.new(name: vehicle_params[main_attribute], secondary_attribute => vehicle_params[secondary_attribute])
+      new_record.save
+      return entity.last.id
+    end
+  end
+
+  def transform_vehicle_extras(extras_keys)
+    arr = []
+    extras_keys.each do |extra_name|
+      extra = VehicleExtra.find_by_name(extra_name)
+      arr.push(extra.id)
+    end
+    return arr.to_s
+  end
+
+  def fetch_entities(vehicle_types, groupedEntities)
+    entities = {}
+    vehicleTypes = []
+    vehicle_types.each do |vehicleType|
+      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
+      entities[vehicleType.slugified_name] = []
+    end
+
+    groupedEntities.each do |batch|
+      type = vehicleTypes[batch.vehicle_type_id]
+      entities[type].push batch
+    end
+    return entities
+  end
 
   # Return vehicle brands
   def fetch_brands(vehicle_types)
     groupedBrands = VehicleBrand.all
-    vehicleBrands = {}
-    vehicleTypes = []
-    vehicle_types.each do |vehicleType|
-      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
-      vehicleBrands[vehicleType.slugified_name] = []
-    end
-
-    groupedBrands.each do |batch|
-      type = vehicleTypes[batch.vehicle_type_id]
-      vehicleBrands[type].push batch
-    end
-    return vehicleBrands
+    return fetch_entities(vehicle_types, groupedBrands)
   end
 
+  # Return vehicle categories
   def fetch_categories(vehicle_types)
     categories = VehicleCategory.all
     if categories.empty?
       return nil
     end
-    vehicleCategories = {}
-    vehicleTypes = []
-    vehicle_types.each do |vehicleType|
-      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
-      vehicleCategories[vehicleType.slugified_name] = []
-    end
-
-    categories.each do |category|
-      type = vehicleTypes[category.vehicle_type_id]
-      vehicleCategories[type].push category
-    end
-    return vehicleCategories
-
+    return fetch_entities(vehicle_types, categories)
   end
 
   # Return vehicle bodies
   def fetch_bodies(vehicle_types)
     bodies = VehicleBody.all
-    vehicleBodies = {}
-    vehicleTypes = []
-    vehicle_types.each do |vehicleType|
-      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
-      vehicleBodies[vehicleType.slugified_name] = []
-    end
-
-    bodies.each do |body|
-      type = vehicleTypes[body.vehicle_type_id]
-      vehicleBodies[type].push body
-    end
-    return vehicleBodies
+    return fetch_entities(vehicle_types, bodies)
   end
 
+  # Return extras
   def fetch_extras(vehicle_types)
     extras = VehicleExtra.all
-    vehicleExtras = {}
-    vehicleTypes = []
-    vehicle_types.each do |vehicleType|
-      vehicleTypes[vehicleType[:id]] = vehicleType.slugified_name
-      vehicleExtras[vehicleType.slugified_name] = []
-    end
+    return fetch_entities(vehicle_types, extras)
+  end
 
-    extras.each do |extra|
-      type = vehicleTypes[extra.vehicle_type_id]
-      vehicleExtras[type].push extra
-    end
-    return vehicleExtras
+  def authorize_user(user_id)
+    current_user.admin || current_user.id == user_id
   end
 
   # Use callbacks to share common setup or constraints between actions.
