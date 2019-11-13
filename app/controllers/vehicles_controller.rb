@@ -115,6 +115,13 @@ class VehiclesController < ApplicationController
     @vehicle.doors = vehicle_params[:doors]
     @vehicle.seats = vehicle_params[:seats]
     @vehicle.user_id = vehicle_params[:user_id]
+    @vehicle.mobility = vehicle_params[:mobility]
+    @vehicle.driveability = vehicle_params[:driveability]
+    @vehicle.act_type = vehicle_params[:act_type]
+
+    vehicle_params[:vehicle_picture].each do |picture|
+      @vehicle.vehicle_picture.attach(picture)
+    end
     return @vehicle
   end
 
@@ -191,6 +198,6 @@ class VehiclesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.require(:vehicle).permit(:name, :vehicle_type_id, :vehicle_brand_id, :vehicle_category_id, :vehicle_model_id, :year, :vehicle_body_id, :meter, :vehicle_fuel_id, :vehicle_condition_id, :doors, :seats, :extras, :user_id)
+    params.require(:vehicle).permit(:name, :vehicle_type_id, :vehicle_brand_id, :vehicle_category_id, :vehicle_model_id, :year, :vehicle_body_id, :meter, :vehicle_fuel_id, :vehicle_condition_id, :act_type, :driveability, :mobility, :doors, :seats, :extras, :user_id, vehicle_picture: [])
   end
 end

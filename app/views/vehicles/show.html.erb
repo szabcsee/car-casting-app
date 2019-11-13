@@ -7,17 +7,17 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @vehicle.type %>
+  <%= @vehicle.vehicle_type.name %>
 </p>
 
 <p>
   <strong>Subcategory:</strong>
-  <%= @vehicle.subCategory %>
+  <%= @vehicle.vehicle_brand.name %>
 </p>
 
 <p>
   <strong>Model:</strong>
-  <%= @vehicle.model %>
+  <%= @vehicle.vehicle_model.name %>
 </p>
 
 <p>
@@ -27,7 +27,7 @@
 
 <p>
   <strong>Body:</strong>
-  <%= @vehicle.body %>
+  <%= @vehicle.vehicle_body.name %>
 </p>
 
 <p>
@@ -37,12 +37,12 @@
 
 <p>
   <strong>Fuel:</strong>
-  <%= @vehicle.fuel %>
+  <%= @vehicle.vehicle_fuel.name %>
 </p>
 
 <p>
   <strong>Condition:</strong>
-  <%= @vehicle.condition %>
+  <%= @vehicle.vehicle_condition.name %>
 </p>
 
 <p>
@@ -69,10 +69,13 @@
   <strong>Extras:</strong>
   <%= @vehicle.extras %>
 </p>
+<% @vehicle.vehicle_picture.each do |photo|  %>
+  <%= image_tag url_for(photo) %>
+<% end %>
 
 <p>
   <strong>User:</strong>
-  <%= @vehicle.user %>
+  <%= @vehicle.user.first_name + ' ' + @vehicle.user.last_name %>
 </p>
 
 <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |

@@ -181,6 +181,7 @@
       </div>
     </section>
   </div>
+  <div class="row">
   <section>
     <div class="inline-group">
       <% @vehicleExtras[vehicleType.slugified_name].each do |vehicleExtra| %>
@@ -190,6 +191,14 @@
       <% end %>
     </div>
   </section>
+  </div>
+  <div class="row">
+  <section>
+    <div class="input">
+      <%= f.file_field :vehicle_picture, :multiple => true, accept: 'image/png,image/gif,image/jpeg' %>
+    </div>
+  </section>
+  </div>
   <section>
     <% if @users %>
       <%= f.label :user %>

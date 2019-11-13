@@ -48,8 +48,10 @@ class Vehicle < ApplicationRecord
   belongs_to :vehicle_brand
   belongs_to :vehicle_condition
   belongs_to :vehicle_fuel
+  belongs_to :vehicle_category
   belongs_to :vehicle_model
   belongs_to :vehicle_type
 
+  has_many_attached :vehicle_picture
 end
 s
