@@ -1,82 +1,140 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="well">
+      <p id="notice"><%= notice %></p>
+      <h1><%= @vehicle.name %></h1>
+      <hr>
+    </div>
+  </div>
+</div>
+<div class="row">
 
-<p>
-  <strong>Name:</strong>
-  <%= @vehicle.name %>
-</p>
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <div class="well">
+      <table class="table table-striped">
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Type:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.vehicle_type.name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Vehicle brand name:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.vehicle_brand.name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Vehicle model name:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.vehicle_model.name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Vehicle body:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.vehicle_body.name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <i class="flaticon flaticon-021-jerrycan"></i> <span class="font-md">Fuel:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.vehicle_fuel.name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Vehicle condition:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.vehicle_condition.name %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Vehicle driveability:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.driveability %></span>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <span class="font-md">Vehicle acting:</span>
+          </td>
+          <td colspan="2">
+            <span class="font-md"><%= @vehicle.act_type %></span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span class="font-md">Year:  <%= @vehicle.year %></span>
+          </td>
+          <td>
+            <span class="font-md">Doors: <%= @vehicle.doors %></span>
+          </td>
+          <td>
+            <i class="flaticon flaticon-027-speedometer"></i> <span class="font-md">Meter: <%= @vehicle.meter %></span>
+          </td>
+          <td>
+            <span class="font-md">Seats: <%= @vehicle.seats %></span>
+          </td>
+        </tr>
+      </table>
+      <div class="well bg-color-darken">
+        <h4 class="txt-color-white">Extras:</h4>
+        <hr class="txt-color-white">
+        <% @extras.each do |extra| %>
+          <span class="label label-default"><%= extra.name %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Type:</strong>
-  <%= @vehicle.vehicle_type.name %>
-</p>
-
-<p>
-  <strong>Subcategory:</strong>
-  <%= @vehicle.vehicle_brand.name %>
-</p>
-
-<p>
-  <strong>Model:</strong>
-  <%= @vehicle.vehicle_model.name %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @vehicle.year %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @vehicle.vehicle_body.name %>
-</p>
-
-<p>
-  <strong>Meter:</strong>
-  <%= @vehicle.meter %>
-</p>
-
-<p>
-  <strong>Fuel:</strong>
-  <%= @vehicle.vehicle_fuel.name %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @vehicle.vehicle_condition.name %>
-</p>
-
-<p>
-  <strong>Doors:</strong>
-  <%= @vehicle.doors %>
-</p>
-
-<p>
-  <strong>Seats:</strong>
-  <%= @vehicle.seats %>
-</p>
-
-<p>
-  <strong>Driveability:</strong>
-  <%= @vehicle.driveability %>
-</p>
-
-<p>
-  <strong>Act Type:</strong>
-  <%= @vehicle.act_type %>
-</p>
-
-<p>
-  <strong>Extras:</strong>
-  <%= @vehicle.extras %>
-</p>
-<% @vehicle.vehicle_picture.each do |photo|  %>
-  <%= image_tag url_for(photo) %>
-<% end %>
-
-<p>
-  <strong>User:</strong>
-  <%= @vehicle.user.first_name + ' ' + @vehicle.user.last_name %>
-</p>
+  <div class="col-sm-12 col-md-6 col-lg-6">
+    <div class="well">
+      <h3>Tulajdonos: <%= @vehicle.user.first_name + ' ' + @vehicle.user.last_name %></h3>
+      <div id="vehiclePicturesCarousel" class="carousel slide">
+        <ol class="carousel-indicators">
+          <% for i in 0..(@vehicle.vehicle_picture.length - 1) %>
+            <li data-target="#vehiclePicturesCarousel" data-slide-to="<%= i %>" class="<%= if i == 0 then
+                                                                                             "active"
+                                                                                           else
+                                                                                             ""
+                                                                                           end %>"></li>
+          <% end %>
+        </ol>
+        <% j = 0 %>
+        <div class="carousel-inner">
+          <% @vehicle.vehicle_picture.each do |photo| %>
+            <div class="item <%= if j == 0 then
+                                   "active"
+                                 else
+                                   ""
+                                 end %>">
+              <%= image_tag url_for(photo) %>
+            </div>
+            <% j += 1 %>
+          <% end %>
+          <a class="left carousel-control" href="#vehiclePicturesCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span> </a>
+          <a class="right carousel-control" href="#vehiclePicturesCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span> </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
 <%= link_to 'Back', vehicles_path %>

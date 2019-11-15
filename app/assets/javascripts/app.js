@@ -2034,6 +2034,6 @@ function fixFooterPosition() {
 
 }
 
-$(window).bind("load resize scroll", function() {
-  fixFooterPosition();
-});
+//$(window).bind("load resize scroll", function() {
+//  fixFooterPosition();
+//});

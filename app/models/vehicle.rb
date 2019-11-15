@@ -42,6 +42,7 @@ class Vehicle < ApplicationRecord
   validates :vehicle_brand_id, presence: true
   validates :vehicle_condition_id, presence: true
   validates :vehicle_body_id, presence: true
+  validates :year, presence: true
 
   belongs_to :user
   belongs_to :vehicle_body

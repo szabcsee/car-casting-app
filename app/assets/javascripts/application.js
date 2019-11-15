@@ -56,14 +56,6 @@
 // MAIN APP JS FILE
 //= require app
 
-// ENHANCEMENT PLUGINS : NOT A REQUIREMENT
-// Voice command : plugin
-//= require speech/voicecommand
-
-// SmartChat UI : plugin
-//= require smart-chat-ui/smart.chat.ui
-//= require smart-chat-ui/smart.chat.manager
-
 //= require plugin/bootstrap-progressbar/bootstrap-progressbar
 //= require plugin/jquery-nestable/jquery.nestable
 
@@ -112,10 +104,6 @@
 // Morris Chart Dependencies
 //= require plugin/morris/morris
 //= require plugin/morris/raphael
-
-//= require plugin/dygraphs/demo-data
-// DYGRAPH
-//= require plugin/dygraphs/dygraph-combined
 
 //= require plugin/delete-table-row/delete-table-row
 //= require plugin/summernote/summernote

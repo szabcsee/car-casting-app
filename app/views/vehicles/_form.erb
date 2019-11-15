@@ -24,8 +24,8 @@
         <div class="field">
           <label class="input">
             <i class="icon-prepend fa fa-cab"></i>
-            <%= f.text_field(:vehicle_category_id, list: 'vehicle_category', placeholder: :vehicle_category) %>
-            <datalist id="vehicle_category">
+            <%= f.text_field(:vehicle_category_id, list: "vehicle_category#{vehicleType.id}", placeholder: :vehicle_category) %>
+            <datalist id="vehicle_category<%= vehicleType.id %>">
               <% @vehicleCategories[vehicleType.slugified_name].each do |brand| %>
                 <option value="<%= brand.name %>"><%= brand.name %></option>
               <% end %>
@@ -45,8 +45,8 @@
       <div class="field">
         <label class="input">
           <i class="icon-prepend fa fa-star"></i>
-          <%= f.text_field(:vehicle_brand_id, list: 'vehicle_brand', class: 'vehicle_brand_select', placeholder: :vehicle_brand) %>
-          <datalist id="vehicle_brand">
+          <%= f.text_field(:vehicle_brand_id, list: "vehicle_brand#{vehicleType.id}", id: "vehicle_brand_select#{vehicleType.id}", class: 'vehicle_brand_select', placeholder: :vehicle_brand, 'data-type_id' => vehicleType.id) %>
+          <datalist id="vehicle_brand<%= vehicleType.id %>">
             <% @vehicleBrands[vehicleType.slugified_name].each do |brand| %>
               <option value="<%= brand.name %>" class=""><%= brand.name %></option>
             <% end %>
@@ -58,8 +58,8 @@
       <div class="field">
         <label class="input state-disabled">
           <i class="icon-prepend fa fa-cube"></i>
-          <%= f.text_field(:vehicle_model_id, list: 'vehicle_model', class: 'vehicle_model_select', placeholder: :vehicle_model, disabled: true) %>
-          <datalist id="vehicle_model">
+          <%= f.text_field(:vehicle_model_id, list: "vehicle_model#{vehicleType.id}", id: "vehicle_model_select#{vehicleType.id}", class: 'vehicle_model_select', placeholder: :vehicle_model, disabled: true) %>
+          <datalist id="vehicle_model<%= vehicleType.id %>">
           </datalist>
         </label>
       </div>

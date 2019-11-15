@@ -10,6 +10,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    @extras = VehicleExtra.where id: @vehicle.extras.split(",").map(&:to_i)
   end
 
 
@@ -110,7 +111,7 @@ class VehiclesController < ApplicationController
     @vehicle.vehicle_condition_id = VehicleCondition.find_by_name(vehicle_params[:vehicle_condition_id]).id
     @vehicle.vehicle_fuel_id = VehicleFuel.find_by_name(vehicle_params[:vehicle_fuel_id]).id
     @vehicle.extras = transform_vehicle_extras(vehicle_params[:extra].keys)
-    @vehicle.year = vehicle_params[:year]
+    @vehicle.year = Date.strptime(vehicle_params[:year], "%Y")
     @vehicle.meter = vehicle_params[:meter]
     @vehicle.doors = vehicle_params[:doors]
     @vehicle.seats = vehicle_params[:seats]

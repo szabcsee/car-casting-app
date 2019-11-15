@@ -65,11 +65,12 @@ class VehicleModelsController < ApplicationController
 
   def find_by_brand
     @vehicle_brand = VehicleBrand.find_by(name: params[:vehicle_brand_id], vehicle_type_id: params[:vehicle_type_id])
+
     @models_arr = {}
     @models_arr[:model_data] = []
-    @models_arr[:vehicle_type_id] =  params[:vehicle_type_id]
-    @models_arr[:vehicle_brand_id] = @vehicle_brand.id
+    @models_arr[:vehicle_type_id] = params[:vehicle_type_id]
     if !@vehicle_brand.nil?
+      @models_arr[:vehicle_brand_id] = @vehicle_brand.id
       @vehicle_models = VehicleModel.where(vehicle_brand_id: @vehicle_brand.id)
       @vehicle_models.each do |model|
         @models_arr[:model_data].push(id: model.id, name: model.name)
@@ -82,13 +83,14 @@ class VehicleModelsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_vehicle_model
-      @vehicle_model = VehicleModel.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def vehicle_model_params
-      params.require(:vehicle_model).permit(:name, :vehicle_brand_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_vehicle_model
+    @vehicle_model = VehicleModel.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def vehicle_model_params
+    params.require(:vehicle_model).permit(:name, :vehicle_brand_id)
+  end
 end
