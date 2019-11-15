@@ -15,7 +15,7 @@ $(document).ready(function () {
                         modelSelect = $(tabId).find('#vehicle_model_select' + response.vehicle_type_id)[0],
                         modelDataList = $(tabId).find('#vehicle_model' + response.vehicle_type_id)[0],
                         label = $(tabId).find('.state-disabled')[0];
-debugger;
+                    
                         $(label).removeClass('state-disabled');
                         $(modelDataList).empty();
                         $(modelSelect).prop('disabled', false);

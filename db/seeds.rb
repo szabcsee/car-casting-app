@@ -241,7 +241,6 @@ VehicleBrand.create(
         {name: 'FORD', vehicle_type_id: 4},
         {name: 'HUSQVARNA', vehicle_type_id: 4},
         {name: 'HONDA', vehicle_type_id: 5},
-        {name: 'BMW', vehicle_type_id: 5},
         {name: 'SUZUKI', vehicle_type_id: 5},
         {name: 'VESPA', vehicle_type_id: 5},
         {name: 'FIAT', vehicle_type_id: 6},
