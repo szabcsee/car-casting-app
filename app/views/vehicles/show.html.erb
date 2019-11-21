@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <div class="well">
-      <p id="notice"><%= notice %></p>
       <h1><%= @vehicle.name %></h1>
       <hr>
     </div>
@@ -44,9 +43,19 @@
             <span class="font-md"><%= @vehicle.vehicle_body.name %></span>
           </td>
         </tr>
+        <% if @vehicle.vehicle_category.name && !@vehicle.vehicle_category.name.empty? %>
+          <tr>
+            <td colspan="2">
+              <span class="font-md">Vehicle category:</span>
+            </td>
+            <td colspan="2">
+              <span class="font-md"><%= @vehicle.vehicle_category.name %></span>
+            </td>
+          </tr>
+        <% end %>
         <tr>
           <td colspan="2">
-            <i class="flaticon flaticon-021-jerrycan"></i> <span class="font-md">Fuel:</span>
+            <span class="font-md">Fuel:</span>
           </td>
           <td colspan="2">
             <span class="font-md"><%= @vehicle.vehicle_fuel.name %></span>
@@ -84,7 +93,7 @@
             <span class="font-md">Doors: <%= @vehicle.doors %></span>
           </td>
           <td>
-            <i class="flaticon flaticon-027-speedometer"></i> <span class="font-md">Meter: <%= @vehicle.meter %></span>
+            <span class="font-md">Meter: <%= @vehicle.meter %></span>
           </td>
           <td>
             <span class="font-md">Seats: <%= @vehicle.seats %></span>

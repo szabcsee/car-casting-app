@@ -109,6 +109,9 @@ class VehiclesController < ApplicationController
     @vehicle.vehicle_model_id = fetch_vehicle_records(VehicleModel,'vehicle_model_id', 'vehicle_brand_id', vehicle_params)
     @vehicle.vehicle_body_id = fetch_vehicle_records(VehicleBody, 'vehicle_body_id', 'vehicle_type_id', vehicle_params)
     @vehicle.vehicle_condition_id = VehicleCondition.find_by_name(vehicle_params[:vehicle_condition_id]).id
+    if vehicle_params[:vehicle_category_id]
+      @vehicle.vehicle_category_id = fetch_vehicle_records(VehicleCategory, 'vehicle_category_id', 'vehicle_type_id', vehicle_params)
+    end
     @vehicle.vehicle_fuel_id = VehicleFuel.find_by_name(vehicle_params[:vehicle_fuel_id]).id
     @vehicle.extras = transform_vehicle_extras(vehicle_params[:extra].keys)
     @vehicle.year = Date.strptime(vehicle_params[:year], "%Y")
