@@ -10,7 +10,7 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
-    @extras = VehicleExtra.where id: @vehicle.extras.split(",").map(&:to_i)
+    @extras = VehicleExtra.where id: (JSON.parse(@vehicle.extras))
   end
 
 

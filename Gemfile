@@ -58,6 +58,9 @@ group :development do
   gem 'annotate'
 
   gem 'bootsnap'
+
+  gem 'debase'
+  gem 'ruby-debug-ide'
 end
 
 group :production do
