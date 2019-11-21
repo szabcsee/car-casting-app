@@ -103,9 +103,11 @@
       <div class="well bg-color-darken">
         <h4 class="txt-color-white">Extras:</h4>
         <hr class="txt-color-white">
-        <% @extras.each do |extra| %>
-          <span class="label label-default"><%= extra.name %></span>
-        <% end %>
+        <% if @extras
+             @extras.each do |extra| %>
+            <span class="label label-default"><%= extra.name %></span>
+          <% end
+             end %>
       </div>
     </div>
   </div>
