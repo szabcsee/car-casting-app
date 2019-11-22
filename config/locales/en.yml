@@ -31,3 +31,19 @@
 
 en:
   hello: "Hello world"
+  signed_out: "Signed Out!"
+  blank: ""
+  vehicles: 'Vehicles'
+  list_vehicles: 'List Vehicles'
+  my_vehicles: 'My Vehicles'
+  new_vehicle: 'New Vehicle'
+  home: 'Home'
+  profile: 'Profile'
+  profiles: 'Profiles'
+  my_profile: 'My profile'
+  settings: 'Settings'
+  smartadmin:
+    messages: 'Messages'
+    notify: 'Notification'
+    tasks: 'Tasks'
+    recent_projects: 'Recent Projects'

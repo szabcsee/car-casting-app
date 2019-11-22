@@ -47,8 +47,6 @@ group :development do
   # background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'gettext'
-  gem 'get_pomo'
 
   # Annote models with table name and attributes
   # rake annotate_models                          # Add schema information (as comments) to model and fixture files
@@ -74,6 +72,4 @@ gem 'jquery-ui-rails'
 gem "ckeditor", :git => "https://github.com/galetahub/ckeditor.git"
 gem 'devise'
 
-# I18n
-gem 'gettext_i18n_rails'
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?

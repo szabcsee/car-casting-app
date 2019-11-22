@@ -15,13 +15,13 @@
         <div class="btn-group btn-group-justified" data-toggle="buttons">
           <label class="btn btn-default">
             <input type="radio" name="activity" id="<%= ajax_notify_mail_path %>">
-            <%= _('Msgs') %> (14) </label>
+            <%= t('smartadmin.messages') %> (14) </label>
           <label class="btn btn-default">
             <input type="radio" name="activity" id="<%= ajax_notify_notifications_path %>">
-            <%= _('notify') %> (3) </label>
+            <%= t('smartadmin.notifications') %> (3) </label>
           <label class="btn btn-default">
             <input type="radio" name="activity" id="<%= ajax_notify_tasks_path %>">
-            <%= _('Tasks') %> (4) </label>
+            <%= t('smartadmin.tasks') %> (4) </label>
         </div>
 
         <!-- notification content -->
@@ -56,7 +56,7 @@
     <div class="project-context hidden-xs">
 
       <span class="label">Projects:</span>
-      <span class="project-selector dropdown-toggle" data-toggle="dropdown"><%= _('Recent projects') %> <i class="fa fa-angle-down"></i></span>
+      <span class="project-selector dropdown-toggle" data-toggle="dropdown"><%= t('smartadmin.recent_projects') %> <i class="fa fa-angle-down"></i></span>
 
       <!-- Suggestion: populate this list with fetch and push technique -->
       <ul class="dropdown-menu">
@@ -128,44 +128,6 @@
         </span>
       </div>
       <!-- end logout button -->
-
-      <!-- search mobile button (this is hidden till mobile view port) -->
-      <div id="search-mobile" class="btn-header transparent pull-right">
-        <span> <a href="javascript:void(0)" title="Search"><i class="fa fa-search"></i></a> </span>
-      </div>
-      <!-- end search mobile button -->
-
-      <!-- input: search field -->
-      <form action="<%= root_path %>" class="header-search pull-right">
-        <input id="search-fld"  type="text" name="param" placeholder="<%= _('Find reports and more') %>" data-autocomplete='[
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"]'>
-        <button type="submit">
-          <i class="fa fa-search"></i>
-        </button>
-        <a href="javascript:void(0);" id="cancel-search-js" title="Cancel Search"><i class="fa fa-times"></i></a>
-      </form>
-      <!-- end input: search field -->
 
       <!-- fullscreen button -->
       <div id="fullscreen" class="btn-header transparent pull-right">

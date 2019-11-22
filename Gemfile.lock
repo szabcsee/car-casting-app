@@ -71,6 +71,9 @@ GEM
       sexp_processor
     concurrent-ruby (1.1.5)
     crass (1.0.5)
+    debase (0.2.5.beta1)
+      debase-ruby_core_source (>= 0.10.2)
+    debase-ruby_core_source (0.10.7)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -184,6 +187,8 @@ GEM
       rainbow (>= 2.2.2, < 4.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 1.7)
+    ruby-debug-ide (0.8.0.beta6)
+      rake (>= 0.8.1)
     ruby-progressbar (1.10.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -240,6 +245,7 @@ DEPENDENCIES
   bootsnap
   byebug
   ckeditor!
+  debase
   devise
   get_pomo
   gettext
@@ -253,6 +259,7 @@ DEPENDENCIES
   rails (~> 5.2)
   rails_best_practices
   rubocop
+  ruby-debug-ide
   sass-rails (~> 5.0)
   spring
   spring-watcher-listen (~> 2.0.0)

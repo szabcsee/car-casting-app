@@ -1,0 +1,18 @@
+hu:
+  hello: 'Hello'
+  signed_out: "Kilépve!"
+  blank: ""
+  vehicles: 'Járművek'
+  list_vehicles: 'Járművek listája'
+  my_vehicles: 'Járműveim'
+  new_vehicle: 'Új jármű'
+  home: 'Főoldal'
+  profile: 'Profil'
+  profiles: 'Profilok'
+  my_profile: 'Profilom'
+  settings: 'Beállítások'
+  smartadmin:
+    messages: 'Üzenetek'
+    notify: 'Értesítés'
+    tasks: 'Feladatok'
+    recent_projects: 'Legutóbbi projektek'

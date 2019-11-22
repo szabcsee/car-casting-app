@@ -14,5 +14,7 @@
 #
 
 class VehicleExtra < ApplicationRecord
+  validates :name, presence: true
+  validates :vehicle_type_id, presence: true
   belongs_to :vehicle_type
 end

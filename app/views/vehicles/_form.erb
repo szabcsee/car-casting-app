@@ -182,24 +182,30 @@
     </section>
   </div>
   <div class="row">
-  <section>
-    <div class="inline-group">
-      <% @vehicleExtras[vehicleType.slugified_name].each do |vehicleExtra| %>
-        <label class="checkbox">
-          <input type="checkbox" name="vehicle[extra[<%= vehicleExtra.name %>]]">
-          <i></i><%= vehicleExtra.name %></label>
-      <% end %>
-    </div>
-  </section>
+    <section>
+      <div class="col col-12">
+        <div class="inline-group">
+          <% @vehicleExtras[vehicleType.slugified_name].each do |vehicleExtra| %>
+            <label class="checkbox">
+              <input type="checkbox" name="vehicle[extra[<%= vehicleExtra.name %>]]">
+              <i></i><%= vehicleExtra.name %></label>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="row">
+    <section>
+      <div class="col col-12">
+        <div class="input">
+          <%= f.file_field :vehicle_picture, :multiple => true, accept: 'image/png,image/gif,image/jpeg' %>
+        </div>
+      </div>
+    </section>
   </div>
   <div class="row">
   <section>
-    <div class="input">
-      <%= f.file_field :vehicle_picture, :multiple => true, accept: 'image/png,image/gif,image/jpeg' %>
-    </div>
-  </section>
-  </div>
-  <section>
+    <div class="col col-12">
     <% if @users %>
       <%= f.label :user %>
       <label class="select">
@@ -210,7 +216,9 @@
     <% else %>
       <%= f.hidden_field :user_id, value: current_user.id %>
     <% end %>
+    </div>
   </section>
+  </div>
   <footer>
     <div class="actions">
       <%= f.submit(class: 'btn btn-success') %>

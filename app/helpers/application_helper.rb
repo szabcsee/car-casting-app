@@ -8,8 +8,8 @@ module ApplicationHelper
   private
 
   def selected_locale
-    locale = FastGettext.locale
-    locale_list.detect {|entry| entry[:locale] == locale}
+    locale = I18n.locale
+    locale_list.detect {|entry| entry[:locale].to_sym == locale}
   end
 
   def get_body_class
@@ -20,65 +20,23 @@ module ApplicationHelper
   def locale_list
     [
         {
+            flag: 'hu',
+            locale: 'hu',
+            name: 'Magyar',
+            alt_name: 'Hungarian'
+        },
+        {
             flag: 'us',
             locale: 'en',
             name: 'English (US)',
             alt_name: 'United States'
         },
         {
-            flag: 'fr',
-            locale: 'fr',
-            name: 'Français',
-            alt_name: 'France'
-        },
-        {
             flag: 'es',
             locale: 'es',
             name: 'Español',
             alt_name: 'Spanish'
-        },
-        {
-            flag: 'de',
-            locale: 'de',
-            name: 'Deutsch',
-            alt_name: 'German'
-        },
-        {
-            flag: 'jp',
-            locale: 'ja',
-            name: '日本語',
-            alt_name: 'Japan'
-        },
-        {
-            flag: 'cn',
-            locale: 'zh',
-            name: '中文',
-            alt_name: 'China'
-        },
-        {
-            flag: 'it',
-            locale: 'it',
-            name: 'Italiano',
-            alt_name: 'Italy'
-        },
-        {
-            flag: 'pt',
-            locale: 'pt',
-            name: 'Portugal',
-            alt_name: 'Portugal'
-        },
-        {
-            flag: 'ru',
-            locale: 'ru',
-            name: 'Русский язык',
-            alt_name: 'Russia'
-        },
-        {
-            flag: 'kr',
-            locale: 'kr',
-            name: '한국어',
-            alt_name: 'Korea'
-        },
+        }
     ]
   end
 
@@ -134,50 +92,50 @@ module ApplicationHelper
     [
         {
             href: root_path,
-            title: _('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + _('Home') + "</span>",
+            title: I18n.t('blank'),
+            content: "<i class='fa fa-lg fa-fw fa-home'></i> <span class='menu-item-parent'>" + t('home') + "</span>",
             admin: false,
             profile: false
         },
         {
             href: user_profile_path(current_user.id),
-            title: _('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-user'></i> <span class='menu-item-parent'>" + _('My Profile') + "</span>",
+            title: I18n.t('blank'),
+            content: "<i class='fa fa-lg fa-fw fa-user'></i> <span class='menu-item-parent'>" + t('my_profile') + "</span>",
             admin: false,
             profile: true
         },
         {
             href: user_profiles_path,
-            title: _('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-list'></i> <span class='menu-item-parent'>" + _('Profiles') + "</span>",
+            title:I18n.t('blank'),
+            content: "<i class='fa fa-lg fa-fw fa-list'></i> <span class='menu-item-parent'>" + t('profiles') + "</span>",
             admin: true,
             profile: true
         },
         {
             href: '#',
-            title: _('Vehicles'),
-            content: "<i class='fa fa-lg fa-fw fa-car'></i> <span class='menu-item-parent'>" + _('Vehicles') + "</span>",
+            title: I18n.t('vehicles'),
+            content: "<i class='fa fa-lg fa-fw fa-car'></i> <span class='menu-item-parent'>" + t('vehicles') + "</span>",
             admin: false,
             profile: false,
             children: [
                 {
                     href: vehicles_path,
-                    title: _('List Vehicles'),
-                    content: "<span class='menu-item-parent'>" + _('List Vehicles') + "</span>",
+                    title: I18n.t('list_vehicles'),
+                    content: "<span class='menu-item-parent'>" + t('list_vehicles') + "</span>",
                     admin: true,
                     profile: false
                 },
                 {
                     href: my_vehicle_path(current_user.id),
-                    title: _('My Vehicles'),
-                    content: "<span class='menu-item-parent'>" + _('My Vehicles') + "</span>",
+                    title: I18n.t('my_vehicles'),
+                    content: "<span class='menu-item-parent'>" + t('my_vehicles') + "</span>",
                     admin: false,
                     profile: false
                 },
                 {
                     href: new_vehicle_path,
-                    title: _('New Vehicle'),
-                    content: "<span class='menu-item-parent'>" + _('New Vehicles') + "</span>",
+                    title: I18n.t('new_vehicle'),
+                    content: "<span class='menu-item-parent'>" + t('new_vehicle') + "</span>",
                     admin: false,
                     profile: false
                 }
@@ -185,8 +143,8 @@ module ApplicationHelper
         },
         {
             href: settings_path,
-            title: _('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + _('Settings') + "</span>",
+            title:I18n.t('blank'),
+            content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + t('settings') + "</span>",
             admin: false,
             profile: false
         },

@@ -1,0 +1,18 @@
+es:
+  hello: 'Hola'
+  signed_out: "Cerrado!"
+  blank: ""
+  vehicles: 'Vehiculos'
+  list_vehicles: 'Lista de los vehiculos'
+  my_vehicles: 'Mis vehiculos'
+  new_vehicle: 'Vehiculo nuevo'
+  home: 'Pagina principal'
+  profile: 'Profile'
+  profiles: 'Profiles'
+  my_profile: 'Mi Profile'
+  settings: 'Opciones'
+  smartadmin:
+    messages: 'Mensajes'
+    notify: 'Notificationes'
+    tasks: 'Tarejas'
+    recent_projects: 'Ultimos Projectos'

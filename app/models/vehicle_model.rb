@@ -14,5 +14,7 @@
 #
 
 class VehicleModel < ApplicationRecord
+  validates :name, presence: true
+  validates :vehicle_brand_id, presence: true
   belongs_to :vehicle_brand
 end

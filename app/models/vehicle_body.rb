@@ -14,4 +14,6 @@
 #
 
 class VehicleBody < ApplicationRecord
+  validates :name, presence: true
+  validates :vehicle_type_id, presence: true
 end
