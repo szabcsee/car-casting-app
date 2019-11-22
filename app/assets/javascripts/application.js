@@ -80,7 +80,6 @@
 //= require plugin/bootstrap-duallistbox/jquery.bootstrap-duallistbox
 //= require plugin/colorpicker/bootstrap-colorpicker
 //= require plugin/knob/jquery.knob
-//= require plugin/x-editable/moment.min
 //= require plugin/x-editable/jquery.mockjax.min
 //= require plugin/x-editable/x-editable
 //= require plugin/typeahead/typeahead
