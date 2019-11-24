@@ -251,6 +251,13 @@ VehicleBrand.create(
     ])
 VehicleCategory.create(
     [
+        {name: 'Old Timer', vehicle_type_id: 1},
+        {name: 'Rendőr', vehicle_type_id: 1},
+        {name: 'Mentő', vehicle_type_id: 1},
+        {name: 'Tűzoltó', vehicle_type_id: 1},
+        {name: 'Versenyautó', vehicle_type_id: 1},
+        {name: 'Egyedi épített', vehicle_type_id: 1},
+        {name: 'Katonai', vehicle_type_id: 3},
         {name: 'Tehergépjármű', vehicle_type_id: 3},
         {name: 'Kommunális gépjármű', vehicle_type_id: 3},
         {name: 'Felépítmény, tartozék, adapter', vehicle_type_id: 3},

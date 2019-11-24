@@ -9,7 +9,7 @@ module ApplicationHelper
 
   def selected_locale
     locale = I18n.locale
-    locale_list.detect {|entry| entry[:locale].to_sym == locale}
+    locale_list.detect { |entry| entry[:locale].to_sym == locale }
   end
 
   def get_body_class
@@ -44,7 +44,7 @@ module ApplicationHelper
     output = ''
     entries.each do |entry|
       children_selected = entry[:children] &&
-          entry[:children].any? {|child| current_page?(child[:href])}
+          entry[:children].any? { |child| current_page?(child[:href]) }
       entry_selected = current_page?(entry[:href])
       li_class =
           case
@@ -98,18 +98,33 @@ module ApplicationHelper
             profile: false
         },
         {
-            href: user_profile_path(current_user.id),
-            title: I18n.t('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-user'></i> <span class='menu-item-parent'>" + t('my_profile') + "</span>",
+            href: '#',
+            title: I18n.t('profiles'),
+            content: "<i class='fa fa-lg fa-fw fa-user'></i> <span class='menu-item-parent'>" + t('profiles') + "</span>",
             admin: false,
-            profile: true
-        },
-        {
-            href: user_profiles_path,
-            title:I18n.t('blank'),
-            content: "<i class='fa fa-lg fa-fw fa-list'></i> <span class='menu-item-parent'>" + t('profiles') + "</span>",
-            admin: true,
-            profile: true
+            profile: false,
+            children: [
+                {
+                    href: user_profile_path(current_user.id),
+                    title: I18n.t('blank'),
+                    content: "<i class='fa fa-lg fa-fw fa-user'></i> <span>" + t('my_profile') + "</span>",
+                    admin: false,
+                    profile: true
+                },
+                {
+                    href: new_user_profile_path,
+                    title: I18n.t('blank'),
+                    content: "<i class='fa fa-lg fa-fw fa-user'></i> <span>" + t('new_profile') + "</span>",
+                    admin: false,
+                    profile: false
+                },
+                {
+                    href: user_profiles_path,
+                    title: I18n.t('blank'),
+                    content: "<i class='fa fa-lg fa-fw fa-list'></i> <span>" + t('profiles') + "</span>",
+                    admin: true,
+                    profile: false
+                }]
         },
         {
             href: '#',
@@ -121,21 +136,21 @@ module ApplicationHelper
                 {
                     href: vehicles_path,
                     title: I18n.t('list_vehicles'),
-                    content: "<span class='menu-item-parent'>" + t('list_vehicles') + "</span>",
+                    content: "<span>" + t('list_vehicles') + "</span>",
                     admin: true,
                     profile: false
                 },
                 {
                     href: my_vehicle_path(current_user.id),
                     title: I18n.t('my_vehicles'),
-                    content: "<span class='menu-item-parent'>" + t('my_vehicles') + "</span>",
+                    content: "<span>" + t('my_vehicles') + "</span>",
                     admin: false,
                     profile: false
                 },
                 {
                     href: new_vehicle_path,
                     title: I18n.t('new_vehicle'),
-                    content: "<span class='menu-item-parent'>" + t('new_vehicle') + "</span>",
+                    content: "<span>" + t('new_vehicle') + "</span>",
                     admin: false,
                     profile: false
                 }
@@ -143,7 +158,7 @@ module ApplicationHelper
         },
         {
             href: settings_path,
-            title:I18n.t('blank'),
+            title: I18n.t('blank'),
             content: "<i class='fa fa-lg fa-fw fa-gear'></i> <span class='menu-item-parent'>" + t('settings') + "</span>",
             admin: false,
             profile: false
@@ -164,6 +179,7 @@ module ApplicationHelper
         item[:children] = filter_left_menu_content(item[:children])
       end
     end
+
     return content_array
   end
 

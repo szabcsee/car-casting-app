@@ -1,48 +1,61 @@
-<%= form_for(user_profile) do |f| %>
+<%= form_for(user_profile, html: {class: 'smart-form'}) do |f| %>
   <% if user_profile.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(user_profile.errors.count, "error") %> prohibited this user_profile from being saved:</h2>
 
       <ul>
-      <% user_profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% user_profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :post_code %>
-    <%= f.text_field :post_code %>
+  <div class="row">
+    <section class="col col-sm-12 col-md-12 col-lg-12">
+      <label class="label"><%= f.label :address1 %></label>
+      <label class="input">
+        <%= f.text_field :address1, placeholder: :address1, class: 'input' %>
+      </label>
+    </section>
+    <section class="col col-sm-12 col-md-12 col-lg-12">
+      <label class="label"><%= f.label :address2 %></label>
+      <label class="input">
+        <%= f.text_field :address2, placeholder: :address2, class: 'input' %>
+      </label>
+    </section>
+    <section class="col col-sm-12 col-md-12 col-lg-12">
+      <label class="label"><%= f.label :telephone %></label>
+      <label class="input">
+        <%= f.text_field :telephone, placeholder: :telephone, class: 'input' %>
+      </label>
+    </section>
   </div>
-
-  <div class="field">
-    <%= f.label :city %>
-    <%= f.text_field :city %>
+  <div class="row">
+    <section class="col col-sm-12 col-md-6 col-lg-6">
+      <label class="label"><%= f.label :post_code %></label>
+      <label class="input">
+        <%= f.text_field :post_code, placeholder: :post_code, class: 'input' %>
+      </label>
+    </section>
+    <section class="col col-sm-12 col-md-6 col-lg-6">
+      <label class="label"><%= f.label :city %></label>
+      <label class="input">
+        <%= f.text_field :city, placeholder: :city, class: 'input' %>
+      </label>
+    </section>
+    <section class="col col-sm-2 col-md-2 col-lg-2">
+      <label class="toggle">
+        <input type="checkbox" name="user_profile[invoiceable]" checked="checked">
+        <i data-swchon-text="ON" data-swchoff-text="OFF"></i><%= t('invoiceable') %></label>
+    </section>
   </div>
-
-  <div class="field">
-    <%= f.label :address2 %>
-    <%= f.text_field :address2 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address1 %>
-    <%= f.text_field :address1 %>
-  </div>
-
-  <div class="field">
-    <%= f.label :telephone %>
-    <%= f.text_field :telephone %>
-  </div>
-
-  ##TODO: számlaképes/nem számlaképes
 
   <div class="field">
     <%= f.hidden_field :user_id %>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <footer>
+    <div class="actions">
+      <%= f.submit(class: 'btn btn-success') %>
+    </div>
+  </footer>
 <% end %>

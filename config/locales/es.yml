@@ -11,6 +11,7 @@ es:
   profiles: 'Profiles'
   my_profile: 'Mi Profile'
   settings: 'Opciones'
+  new_user_profile: 'crear perfil nuevo'
   smartadmin:
     messages: 'Mensajes'
     notify: 'Notificationes'

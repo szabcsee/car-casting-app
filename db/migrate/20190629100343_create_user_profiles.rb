@@ -6,6 +6,7 @@ class CreateUserProfiles < ActiveRecord::Migration[5.0]
       t.string :address2
       t.string :address1
       t.string :telephone
+      t.boolean :invoiceable
       t.references :user, foreign_key: true
 
       t.timestamps

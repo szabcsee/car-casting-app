@@ -6,6 +6,7 @@ class CreateCompanies < ActiveRecord::Migration[5.0]
       t.string :billing_address1
       t.string :billing_address2
       t.string :city
+      t.string :post_code
       t.string :company_name
       t.string :tax_number
       t.string :company_number

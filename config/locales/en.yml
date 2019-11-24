@@ -41,7 +41,10 @@ en:
   profile: 'Profile'
   profiles: 'Profiles'
   my_profile: 'My profile'
+  new_profile: 'New User Profile'
+  new_user_profile: 'New User Profile'
   settings: 'Settings'
+  invoiceable: 'invoiceable'
   smartadmin:
     messages: 'Messages'
     notify: 'Notification'

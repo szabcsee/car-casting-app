@@ -5,8 +5,6 @@
 
 ##Timeline
 
-Oct. 18.
-
 
 #Igények
 UserProfile
@@ -31,16 +29,6 @@ UserProfile
 Vehicle
 
 Other specification is kelleni fog, típus szerint az alábbi opciókkal:
-    
-  személyautóknál
-    
-    old_timer
-    rendőr
-    mentő
-    tűzoltó
-    versenyautó
-    egyedi épített
-    katonai
 
   kivitelt teljes mértékben átvenni a hasznaltautoról a haszonjárművekhez
   

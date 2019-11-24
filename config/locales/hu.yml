@@ -11,6 +11,8 @@ hu:
   profiles: 'Profilok'
   my_profile: 'Profilom'
   settings: 'Beállítások'
+  new_user_profile: 'Felhasználói profil beállítása'
+  invoiceable: 'Számlaképes'
   smartadmin:
     messages: 'Üzenetek'
     notify: 'Értesítés'
