@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   get 'ajax/notify_tasks', to: 'ajax#notify_tasks', as: :ajax_notify_tasks
 
   # Misc methods
-  get '/home/set_locale', to: 'home#set_locale', as: :home_set_locale
+  get '/home/set_locale', to: 'home#configure_locale', as: :home_set_locale
 
   # CK editor
   mount Ckeditor::Engine => '/ckeditor'
