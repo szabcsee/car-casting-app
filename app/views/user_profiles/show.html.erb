@@ -32,7 +32,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @user_profile.user %>
+  <%= @user_profile.user.first_name + ' ' + @user_profile.user.last_name %>
 </p>
 
 <%= link_to 'Edit', edit_user_profile_path(@user_profile) %> |

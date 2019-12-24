@@ -129,3 +129,4 @@
 
 // Vehicle Module
 //= require vehicles
+//= require user_profiles
