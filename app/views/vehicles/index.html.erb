@@ -10,9 +10,9 @@
 
     <!-- breadcrumb -->
     <ol class="breadcrumb">
-      <li>Home</li>
-      <li>All Vehicles</li>
-      | Search parameters: []
+      <li><%=  I18n.t('home') %></li>
+      <li><%= I18n.t('all_vehicles') %></li>
+      | <%= I18n.t('search_parameters') %>: []
     </ol>
     <!-- end breadcrumb -->
 
@@ -34,7 +34,7 @@
 <div class="container well">
   <div class="col-12">
     <div class="row-fluid">
-      <h1>All Vehicles <%= link_to 'New Vehicle', new_vehicle_path, class: 'btn btn-primary pull-right' %></h1>
+      <h1><%= I18n.t('all_vehicles') %> <%= link_to I18n.t('new_vehicle'), new_vehicle_path, class: 'btn btn-primary pull-right' %></h1>
       <hr>
       <ul class="media-list">
         <% @vehicles.each do |vehicle| %>

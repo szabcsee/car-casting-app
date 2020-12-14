@@ -13,17 +13,17 @@
     <% if current_user.admin %>
       <li>
         <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-red' do %>
-          <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span>All Vehicles <span class="label pull-right bg-color-darken">14</span></span> </span>
+          <span class="iconbox"> <i class="fa fa-envelope fa-4x"></i> <span><%= I18n.t('all_vehicles') %> <span class="label pull-right bg-color-darken">14</span></span> </span>
         <% end %>
       </li>
       <li>
         <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-red' do %>
-          <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span>All Users</span> </span>
+          <span class="iconbox"> <i class="fa fa-user fa-4x"></i> <span><%= I18n.t('all_users') %></span> </span>
         <% end %>
       </li>
       <li>
         <%= link_to root_path, class: 'jarvismetro-tile big-cubes bg-color-blue' do %>
-          <span class="iconbox"> <i class="fa fa-gear fa-4x"></i> <span>Settings</span> </span>
+          <span class="iconbox"> <i class="fa fa-gear fa-4x"></i> <span><%= I18n.t('settings') %></span> </span>
         <% end %>
       </li>
       <li>

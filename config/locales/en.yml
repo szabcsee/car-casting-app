@@ -34,6 +34,8 @@ en:
   signed_out: "Signed Out!"
   blank: ""
   vehicles: 'Vehicles'
+  all_vehicles: 'All Vehicles'
+  all_users: 'All Users'
   list_vehicles: 'List Vehicles'
   my_vehicles: 'My Vehicles'
   new_vehicle: 'New Vehicle'
@@ -45,6 +47,7 @@ en:
   new_user_profile: 'New User Profile'
   settings: 'Settings'
   invoiceable: 'invoiceable'
+  search_parameters: 'Search parameters'
   smartadmin:
     messages: 'Messages'
     notify: 'Notification'

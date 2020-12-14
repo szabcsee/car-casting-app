@@ -3,6 +3,8 @@ hu:
   signed_out: "Kilépve!"
   blank: ""
   vehicles: 'Járművek'
+  all_vehicles: 'Minden jármű'
+  all_users: 'Minden felhasználó'
   list_vehicles: 'Járművek listája'
   my_vehicles: 'Járműveim'
   new_vehicle: 'Új jármű'
@@ -13,6 +15,7 @@ hu:
   settings: 'Beállítások'
   new_user_profile: 'Felhasználói profil beállítása'
   invoiceable: 'Számlaképes'
+  search_parameters: 'Keresési paraméterek'
   smartadmin:
     messages: 'Üzenetek'
     notify: 'Értesítés'
